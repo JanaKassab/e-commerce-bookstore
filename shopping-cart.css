@@ -1,0 +1,7 @@
+:root {
+  --primary-color: #003366; /* Navy Blue: Works well with bold, classic fonts like Garamond for headers */
+  --secondary-color: #daa520; /* Goldenrod: Use for highlights, paired with a neutral serif like Merriweather */
+  --background-color: #fffff0; /* Ivory White: Ideal as a background with any of the mentioned fonts */
+  --accent-color: #800020; /* Burgundy: Makes a strong, elegant statement with fonts like Bodoni or Playfair Display */
+  --neutral-color: #708090; /* Slate Gray: A versatile color that pairs well with modern sans-serif fonts like Montserrat for body text */
+}
