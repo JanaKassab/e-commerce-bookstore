@@ -1,7 +1,180 @@
 :root {
-  --primary-color: #003366; /* Navy Blue: Works well with bold, classic fonts like Garamond for headers */
-  --secondary-color: #daa520; /* Goldenrod: Use for highlights, paired with a neutral serif like Merriweather */
-  --background-color: #fffff0; /* Ivory White: Ideal as a background with any of the mentioned fonts */
-  --accent-color: #800020; /* Burgundy: Makes a strong, elegant statement with fonts like Bodoni or Playfair Display */
-  --neutral-color: #708090; /* Slate Gray: A versatile color that pairs well with modern sans-serif fonts like Montserrat for body text */
+  --primary-color: #003366;
+  --secondary-color: #daa520;
+  --background-color: #fffff0;
+  --accent-color: #800020;
+  --neutral-color: #708090;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: 'Montserrat', sans-serif;
+  color: var(--neutral-color);
+}
+
+main {
+  padding: 40px;
+}
+
+h2 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* Products */
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border: 1px solid var(--neutral-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  background-color: #ffffff;
+  transition: transform 0.2s ease-in-out;
+}
+
+.item:hover {
+  transform: scale(1.02);
+}
+
+.item img {
+  width: 150px;
+  height: 200px;
+  border-radius: var(--border-radius);
+  margin-bottom: 15px;
+}
+
+.item h4 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+.item div {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.item div button {
+  background-color: var(--secondary-color);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.item div button:hover {
+  background-color: var(--accent-color);
+}
+
+.item div input {
+  width: 50px;
+  text-align: center;
+  margin: 0 5px;
+  border: 1px solid var(--neutral-color);
+  border-radius: var(--border-radius);
+  padding: 5px;
+}
+
+.item p {
+  font-size: 1.2rem;
+  color: var(--neutral-color);
+}
+
+/* Coupon & Cart Total */
+.coupon-cart {
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 0;
+  gap: 20px;
+}
+
+.coupon,
+.cart-total {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid var(--neutral-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  background-color: #ffffff;
+}
+
+.coupon h4,
+.cart-total h4,
+.cart-total h5 {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.coupon p,
+.cart-total p {
+  color: var(--neutral-color);
+}
+
+.coupon button,
+.cart-total button {
+  width: 100%;
+  background-color: var(--secondary-color);
+  color: #ffffff;
+  padding: 10px;
+  border: none;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.coupon button:hover,
+.cart-total button:hover {
+  background-color: var(--accent-color);
+}
+
+.coupon input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--neutral-color);
+  border-radius: var(--border-radius);
+  margin-bottom: 15px;
+}
+
+.cart-total div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+/* Responsive */
+@media only screen and (max-width: 1024px) {
+  main {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  /* Products */
+  .items {
+    flex-direction: column;
+  }
+
+  .item {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Coupon & Cart Total */
+  .coupon-cart {
+    flex-direction: column;
+  }
 }
