@@ -16,7 +16,7 @@
       <section class="items">
         <h2>PRODUCTS</h2>
         <!-- Single Product -->
-        <div class="item">
+        <div class="item" data-id="1">
           <div class="item-info">
             <img src="./48-laws-of-power-book.jpg" alt="48 laws of power" />
             <div class="info">
@@ -28,15 +28,15 @@
             </div>
           </div>
           <div>
-            <button>-</button>
-            <input type="number" disabled value="0" />
-            <button>+</button>
+            <button class="sub-btn" data-action="sub">-</button>
+            <input class="qty-input" type="number" disabled value="0" />
+            <button class="add-btn" data-action="add">+</button>
           </div>
           <p>$10</p>
-          <button>❌</button>
+          <button class="remove-btn" data-action="delete"></button>
         </div>
         <!-- Single Product -->
-        <div class="item">
+        <div class="item" data-id="2">
           <div class="item-info">
             <img src="./48-laws-of-power-book.jpg" alt="48 laws of power" />
             <div class="info">
@@ -48,12 +48,12 @@
             </div>
           </div>
           <div>
-            <button>-</button>
-            <input type="number" disabled value="0" />
-            <button>+</button>
+            <button class="sub-btn" data-action="sub">-</button>
+            <input class="qty-input" type="number" disabled value="0" />
+            <button class="add-btn" data-action="add">+</button>
           </div>
           <p>$10</p>
-          <button>❌</button>
+          <button class="remove-btn" data-action="delete"></button>
         </div>
       </section>
       <!-- Coupon & Cart Total-->
@@ -65,7 +65,7 @@
             <p>Enter your coupon code if you have one.</p>
           </div>
           <div class="coupon-code">
-            <input type="text" placeholder="Coupon Code" />
+            <input id="coupon-code" type="text" placeholder="Coupon Code" />
             <button>APPLY COUPON</button>
           </div>
         </div>
@@ -74,16 +74,20 @@
           <h4>CART TOTAL</h4>
           <div>
             <h5>Subtotal</h5>
-            <p>$215.00</p>
+            <p>$ <span id="subtotal">215.00</span></p>
           </div>
           <div>
             <h5>Delivery</h5>
-            <p>$5.00</p>
+            <p>$ <span id="delivery">5.00</span></p>
           </div>
           <hr />
           <div>
+            <h5>Discount</h5>
+            <p>$ <span id="discount">20.00</span></p>
+          </div>
+          <div>
             <h5>Total</h5>
-            <p>$220.00</p>
+            <p>$ <span id="total">200.00</span></p>
           </div>
           <button>PROCEED TO CHECKOUT</button>
         </div>
@@ -91,5 +95,6 @@
       <!-- Footer -->
       <footer>Replace with Product Branch Footer</footer>
     </main>
+    <script src="cart.js"></script>
   </body>
 </html>

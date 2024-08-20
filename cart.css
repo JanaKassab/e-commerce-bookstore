@@ -39,7 +39,7 @@ button {
 
 button:hover {
   background-color: var(--accent-color);
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 /* Products */
@@ -58,11 +58,6 @@ button:hover {
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   background-color: #ffffff;
-  transition: transform 0.2s ease-in-out;
-}
-
-.item:hover {
-  transform: scale(1.02);
 }
 
 .info {
@@ -76,6 +71,11 @@ button:hover {
   height: 200px;
   border-radius: var(--border-radius);
   margin-bottom: 15px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.item img:hover {
+  transform: scale(1.1);
 }
 
 .item h4 {
@@ -94,15 +94,6 @@ button:hover {
   padding: 8px 16px;
 }
 
-.item div input {
-  width: 60px;
-  text-align: center;
-  margin: 0 10px;
-  border: 1px solid var(--neutral-color);
-  border-radius: var(--border-radius);
-  padding: 5px;
-}
-
 .item p {
   font-size: 1.2rem;
   color: var(--neutral-color);
@@ -117,6 +108,11 @@ button:hover {
 
 .item-info .info {
   width: 40%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.item-info .info:hover {
+  transform: scale(1.05);
 }
 
 .item-info .info h4 {
@@ -129,6 +125,56 @@ button:hover {
 .item-info .info p {
   margin-top: 10px;
   line-height: 1.5;
+}
+
+.sub-btn,
+.add-btn {
+  font-size: x-large;
+}
+
+.qty-input {
+  width: 80px;
+  text-align: center;
+  margin: 0 15px;
+  border: 1px solid var(--neutral-color);
+  border-radius: var(--border-radius);
+  padding: 10px;
+  height: 20px;
+}
+.remove-btn {
+  position: relative;
+  overflow: hidden;
+  font-size: 16px;
+  padding: 20px;
+  width: 60px;
+}
+
+.remove-btn::before {
+  content: '❌';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s;
+}
+
+.remove-btn:hover::before {
+  opacity: 0;
+}
+
+.remove-btn::after {
+  content: '✖';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 18px;
+}
+
+.remove-btn:hover::after {
+  opacity: 1;
 }
 
 /* Coupon & Cart Total */
