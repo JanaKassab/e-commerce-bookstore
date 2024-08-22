@@ -177,6 +177,52 @@ button:hover {
   opacity: 1;
 }
 
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.pagination button {
+  padding: 10px 15px;
+  font-size: 1rem;
+}
+
+.page-number-container {
+  display: flex;
+  gap: 10px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.page-number-container .link {
+  padding: 10px 15px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.page-number-container .link:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.1);
+}
+
+.link.active {
+  background-color: var(--secondary-color);
+  color: #ffffff;
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.link.active:hover {
+  background-color: var(--accent-color);
+  transform: scale(1.1);
+}
+
 /* Coupon & Cart Total */
 .coupon-cart {
   display: flex;

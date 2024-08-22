@@ -15,45 +15,11 @@
       <!-- Products -->
       <section class="items">
         <h2>PRODUCTS</h2>
-        <!-- Single Product -->
-        <div class="item" data-id="1">
-          <div class="item-info">
-            <img src="./48-laws-of-power-book.jpg" alt="48 laws of power" />
-            <div class="info">
-              <h4>Product name</h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non
-                optio quam laudantium officia, veniam animi.
-              </p>
-            </div>
-          </div>
-          <div>
-            <button class="sub-btn" data-action="sub">-</button>
-            <input class="qty-input" type="number" disabled value="0" />
-            <button class="add-btn" data-action="add">+</button>
-          </div>
-          <p>$10</p>
-          <button class="remove-btn" data-action="delete"></button>
-        </div>
-        <!-- Single Product -->
-        <div class="item" data-id="2">
-          <div class="item-info">
-            <img src="./48-laws-of-power-book.jpg" alt="48 laws of power" />
-            <div class="info">
-              <h4>Product name</h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non
-                optio quam laudantium officia, veniam animi.
-              </p>
-            </div>
-          </div>
-          <div>
-            <button class="sub-btn" data-action="sub">-</button>
-            <input class="qty-input" type="number" disabled value="0" />
-            <button class="add-btn" data-action="add">+</button>
-          </div>
-          <p>$10</p>
-          <button class="remove-btn" data-action="delete"></button>
+        <!-- Pagination -->
+        <div class="pagination">
+          <button class="prev" onclick="backBtn()">prev</button>
+          <ul class="page-number-container"></ul>
+          <button class="next" onclick="nextBtn()">next</button>
         </div>
       </section>
       <!-- Coupon & Cart Total-->

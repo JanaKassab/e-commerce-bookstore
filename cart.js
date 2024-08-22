@@ -14,10 +14,117 @@ const inputCouponCode = document.getElementById('coupon-code');
 const btnApplyCoupon = document.querySelector('.coupon-code button');
 // Items
 const itemsContainer = document.querySelector('.items');
+// Pagination
+const linksContainer = document.querySelector('.page-number-container');
+
+// Variables
+const itemsExample = Array.from({ length: 5 }, () => ({
+  img: './48-laws-of-power-book.jpg',
+  alt: '48 laws of power',
+  name: '48 Laws of Power',
+  description:
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non optio quam laudantium officia, veniam animi.',
+  price: 10,
+}));
+
+const ITEMS_PER_PAGE = 3;
+let currentPage = 1;
 
 // Make discount initially display none
 divDiscount.style.display = 'none';
+
 // Functions
+
+// Function to display items based on the current page
+function displayItems(items) {
+  const h2Element = document.querySelector('.items h2');
+
+  // Clear existing items
+  const existingItems = document.querySelectorAll('.items .item');
+  existingItems.forEach(item => item.remove());
+
+  // Determine the range of items to display
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const itemsToDisplay = items.slice(startIndex, endIndex);
+
+  itemsToDisplay.forEach((item, index) => {
+    // Step 2: Create a new HTML element
+    const newElement = document.createElement('div');
+    newElement.innerHTML = `<!-- Single Product -->
+          <div class="item-info">
+            <img src="${item.img}" alt="${item.alt}"/>
+            <div class="info">
+              <h4>${item.name}</h4>
+              <p>${item.description}</p>
+            </div>
+          </div>
+          <div>
+            <button class="sub-btn" data-action="sub">-</button>
+            <input class="qty-input" type="number" disabled value="0" />
+            <button class="add-btn" data-action="add">+</button>
+          </div>
+          <p>$${item.price}</p>
+          <button class="remove-btn" data-action="delete"></button>`;
+    newElement.classList.add('item');
+    newElement.dataset.index = startIndex + index;
+    // Step 3: Append the new element right after the <h2> element
+    h2Element.insertAdjacentElement('afterend', newElement);
+  });
+}
+
+// Function to create pagination links
+function createLinks(numItems) {
+  // Clear existing links
+  linksContainer.innerHTML = '';
+
+  const totalPages = Math.ceil(numItems / ITEMS_PER_PAGE);
+
+  for (let i = 1; i <= totalPages; i++) {
+    const newElement = document.createElement('li');
+    newElement.classList.add('link');
+    if (i === currentPage) newElement.classList.add('active');
+    newElement.textContent = i;
+    newElement.dataset.page = i;
+    newElement.onclick = setActiveLink;
+    linksContainer.appendChild(newElement);
+  }
+}
+
+// Function to set the active pagination link
+function setActiveLink(event) {
+  const links = document.querySelectorAll('.page-number-container .link');
+
+  links.forEach(link => link.classList.remove('active'));
+  event.target.classList.add('active');
+  currentPage = parseInt(event.target.dataset.page);
+}
+
+// Function to go to the previous page
+function backBtn() {
+  if (currentPage > 1) {
+    currentPage--;
+    displayItems(itemsExample);
+    createLinks(itemsExample.length);
+
+    // Scroll to the top of the items container
+    document.querySelector('.items').scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+// Function to go to the next page
+function nextBtn() {
+  const totalPages = Math.ceil(itemsExample.length / ITEMS_PER_PAGE);
+  if (currentPage < totalPages) {
+    currentPage++;
+    displayItems(itemsExample);
+    createLinks(itemsExample.length);
+
+    // Scroll to the top of the items container
+    document.querySelector('.items').scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
 function handleItemAction(itemId, action) {
   switch (action) {
     case 'add':
@@ -36,6 +143,10 @@ function handleItemAction(itemId, action) {
       console.log(`Unknown action: ${action}`);
   }
 }
+
+// Call Functions
+displayItems(itemsExample);
+createLinks(itemsExample.length);
 
 // Event Listeners
 
