@@ -94,10 +94,10 @@ function createLinks(numItems) {
 // Function to set the active pagination link
 function setActiveLink(event) {
   const links = document.querySelectorAll('.page-number-container .link');
-
   links.forEach(link => link.classList.remove('active'));
   event.target.classList.add('active');
   currentPage = parseInt(event.target.dataset.page);
+  displayItems(itemsExample);
 }
 
 // Function to go to the previous page
