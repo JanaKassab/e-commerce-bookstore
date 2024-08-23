@@ -3,15 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="header/books.ico.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" href="footer/footer.css" />
+    <link rel="stylesheet" href="header/header.css" />
     <link rel="stylesheet" href="cart.css" />
-    <title>Replace with Product Branch Header</title>
+    <title>KutubHub - Cart Page</title>
   </head>
   <body>
+    <!-- Navbar -->
+    <header>
+      <div class="header1">
+        <div class="left-section">
+          <img src="header/logo.png" alt="icon" class="logo" />
+        </div>
+
+        <div class="middle-section">
+          <input type="text" class="search-bar" placeholder="Search..." />
+          <div>
+            <img
+              class="search-logo"
+              src="header/icons8-search-64.png"
+              alt="search icon"
+            />
+          </div>
+        </div>
+        <div class="right-section">
+          <button class="sign-in">Sign In</button>
+          <img class="bascket" src="header/icons8-cart-64.png" alt="bascket" />
+          <img class="profile" src="header/icons8-user-48.png" alt="profile" />
+        </div>
+      </div>
+
+      <div class="header2">
+        <div><a href="#">Home</a></div>
+        <div><a href="#">All Books</a></div>
+        <div><a href="#">Bestsellers</a></div>
+        <div><a href="#">Trending</a></div>
+        <div><a href="#">Children's Books</a></div>
+        <div><a href="#">Coming Soon</a></div>
+      </div>
+    </header>
     <main>
-      <!-- Navbar -->
-      <section>
-        <h1>Replace with Product Branch Navbar</h1>
-      </section>
       <!-- Products -->
       <section class="items">
         <h2>PRODUCTS</h2>
@@ -58,9 +94,43 @@
           <button>PROCEED TO CHECKOUT</button>
         </div>
       </section>
-      <!-- Footer -->
-      <footer>Replace with Product Branch Footer</footer>
     </main>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section about-us">
+          <h2>About Us</h2>
+          <p>
+            Welcome to KutubHub, your destination for a world of stories and
+            knowledge. Our passion for books drives us to curate a diverse
+            selection, from bestsellers to hidden gems, catering to readers of
+            all ages and interests.
+          </p>
+        </div>
+
+        <div class="footer-section quick-links">
+          <h2>Quick Links</h2>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">All Books</a></li>
+            <li><a href="#">Bestsellers</a></li>
+            <li><a href="#">Trending</a></li>
+            <li><a href="#">Children's Books</a></li>
+            <li><a href="#">Coming Soon</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section follow-us">
+          <h2>Follow Us</h2>
+          <div class="socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
     <script src="cart.js"></script>
   </body>
 </html>
