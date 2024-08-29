@@ -18,7 +18,8 @@ const itemsContainer = document.querySelector('.items');
 // Pagination
 const linksContainer = document.querySelector('.page-number-container');
 const ITEMS_PER_PAGE = 3;
-let currentPage = 1;
+const btnBack = document.querySelector('.prev');
+const btnNext = document.querySelector('.next');
 
 // Get Books from Local Storage
 let books = JSON.parse(localStorage.getItem('books')) || [];
@@ -87,13 +88,44 @@ function displayBooks() {
 }
 
 // Function to create pagination links
+let currentPage = 1;
+let prevPage = 1;
+let startPage = 1;
+let endPage = 3;
 function createLinks() {
+  const totalPages = Math.ceil(books.length / ITEMS_PER_PAGE);
+  btnBack.disabled = false;
+  btnNext.disabled = false;
+  if (currentPage === 1) btnBack.disabled = true;
+  if (currentPage === totalPages) btnNext.disabled = true;
+  // disable btns if can't go further
   // Clear existing links
   linksContainer.innerHTML = '';
+  // Make sure it stays within range
+  currentPage = Math.max(1, Math.min(currentPage, totalPages));
 
-  const totalPages = Math.ceil(books.length / ITEMS_PER_PAGE);
+  // Passed last visible page
+  if (currentPage === endPage + 1 && currentPage !== totalPages) {
+    startPage = currentPage;
+    endPage = Math.min(currentPage + 2, totalPages);
+  }
+  // No More pages
+  if (currentPage === totalPages && totalPages !== 1) {
+    startPage = currentPage - 2;
+    endPage = currentPage;
+  }
+  // Only 1 page
+  if (currentPage === totalPages && totalPages === 1) {
+    startPage = endPage = 1;
+  }
+  // prev > current means going backward
+  // 4 > 3 true && 3 === 4 - 1 true
+  if (prevPage > currentPage && currentPage === startPage - 1) {
+    startPage = Math.max(1, currentPage - 2);
+    endPage = Math.max(currentPage, 3);
+  }
 
-  for (let i = 1; i <= totalPages; i++) {
+  for (let i = startPage; i <= endPage; i++) {
     const newElement = document.createElement('li');
     newElement.classList.add('link');
     if (i === currentPage) newElement.classList.add('active');
@@ -102,6 +134,8 @@ function createLinks() {
     newElement.onclick = setActiveLink;
     linksContainer.appendChild(newElement);
   }
+  // Update PrevPage
+  prevPage = currentPage;
 }
 
 // Function to set the active pagination link
@@ -208,6 +242,42 @@ function calculateFinalPrice(discountValue) {
   spanTotal.textContent = finalPrice.toFixed(2);
 }
 
+// Coupon Fns
+function parseCoupon(coupon) {
+  // Make value from % to number, from date to big date number
+  return {
+    ...coupon,
+    discount: parseInt(coupon.discount, 10),
+    expiration: new Date(coupon.expiration),
+  };
+}
+
+function isCouponExpired(expirationDate) {
+  return new Date() > expirationDate;
+}
+
+function applyCoupon(coupon) {
+  divDiscount.style.display = 'flex';
+  localStorage.setItem('coupon', JSON.stringify(coupon));
+  calculateFinalPrice(coupon.discount / 100);
+}
+
+function handleInvalidCoupon(message) {
+  inputCouponCode.placeholder = message;
+  calculateFinalPrice();
+}
+
+// Check and apply coupon if it exists in localStorage
+const storedCoupon = JSON.parse(localStorage.getItem('coupon'));
+if (storedCoupon) {
+  const parsedCoupon = parseCoupon(storedCoupon);
+  if (isCouponExpired(parsedCoupon.expiration)) {
+    handleInvalidCoupon('Coupon Expired');
+  } else {
+    applyCoupon(parsedCoupon);
+  }
+}
+
 // Call Functions on Load
 displayBooks();
 createLinks();
@@ -222,35 +292,33 @@ const coupons = [
 
 // Event Listeners
 btnApplyCoupon.addEventListener('click', () => {
-  const coupon = inputCouponCode.value.trim();
-  if (!coupon) {
+  const couponCode = inputCouponCode.value.trim();
+  if (!couponCode) {
     console.error('Invalid Input');
     return;
   }
   inputCouponCode.value = '';
 
   // Find the coupon object that matches the entered code
-  const couponObject = coupons.find(couponItem => couponItem.code === coupon);
+  const couponObject = coupons.find(
+    couponItem => couponItem.code === couponCode
+  );
 
   if (couponObject) {
-    const discount = parseInt(couponObject.discount, 10);
-    // Check if the coupon is expired
-    const currentDate = new Date();
-    const expirationDate = new Date(couponObject.expiration);
-
-    if (currentDate > expirationDate) {
-      inputCouponCode.placeholder = 'Coupon Expired';
+    const parsedCoupon = parseCoupon(couponObject);
+    if (isCouponExpired(parsedCoupon.expiration)) {
+      handleInvalidCoupon('Coupon Expired');
     } else {
-      divDiscount.style.display = 'flex';
-      calculateFinalPrice(discount / 100);
+      applyCoupon(parsedCoupon);
     }
   } else {
-    inputCouponCode.placeholder = 'Invalid Coupon';
+    handleInvalidCoupon('Invalid Coupon');
   }
 });
 
 // Target checkout btn
 btnCheckout.addEventListener('click', () => {
   // Go to Checkout.html
+  updateBooks();
   window.location.href = 'checkout.html';
 });
