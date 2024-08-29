@@ -179,19 +179,32 @@ function calculateTotalPrice() {
 
 function calculateFinalPrice(discountValue) {
   const totalPrice = calculateTotalPrice();
-  let isEqual = true;
-  if (+discountValue) {
-    spanDiscount.textContent = discountValue * totalPrice;
-    isEqual = false;
-  } else {
-    discountValue = 1;
+  let discount = parseFloat(discountValue);
+
+  // Handle cases where discountValue is not a number or is zero
+  if (isNaN(discount) || discount <= 0) {
+    discount = 0;
   }
-  const finalPrice = totalPrice - discountValue * totalPrice + 3;
-  if (discountValue > 1) {
+
+  // Calculate the discount amount and final price
+  const discountAmount = discount * totalPrice;
+  const finalPrice = totalPrice - discountAmount + 3;
+
+  // Update the discount display
+  spanDiscount.textContent = discountAmount.toFixed(2);
+
+  // Update the display for old total and total price
+  if (discount > 0) {
     spanOldTotal.style.display = 'inline-block';
     spanTotal.style.color = '#50C878';
     spanTotal.style.fontWeight = 'bolder';
+  } else {
+    spanOldTotal.style.display = 'none';
+    spanTotal.style.color = '';
+    spanTotal.style.fontWeight = '';
   }
+
+  // Display the final price
   spanTotal.textContent = finalPrice.toFixed(2);
 }
 
