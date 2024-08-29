@@ -1,4 +1,4 @@
-let booksData = []; // Assuming booksData is defined elsewhere
+let booksData = []; 
 let currentBook = null; // To store the book being edited
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -29,29 +29,62 @@ document.addEventListener("DOMContentLoaded", function () {
 
     initializeBookCards(booksData);
 
-    // Add book form 
+    // Add book form
     const productForm = document.getElementById('ProductForm');
-if (productForm) {
-    productForm.addEventListener('submit', function (event) {
-        event.preventDefault();
+    if (productForm) {
+        productForm.addEventListener('submit', function (event) {
+            event.preventDefault();
 
-        // Get form values
-        const title = document.getElementById('Title').value;
-        const isbn = document.getElementById('ISBN').value;
-        const author = document.getElementById('Author').value;
-        const price = parseFloat(document.getElementById('Price').value);
-        const category = document.getElementById('Category').value;
-        const language = document.getElementById('Languages').value;
-        const description = document.getElementById('Description').value;
-        const publisher = document.getElementById('Publisher').value;
-        const imageFile = document.getElementById('image').files[0]; // File input
+            // Get form values
+            const title = document.getElementById('Title').value;
+            const isbn = document.getElementById('ISBN').value;
+            const author = document.getElementById('Author').value;
+            const price = parseFloat(document.getElementById('Price').value);
+            const category = document.getElementById('Category').value;
+            const language = document.getElementById('Languages').value;
+            const description = document.getElementById('Description').value;
+            const publisher = document.getElementById('Publisher').value;
+            const imageFile = document.getElementById('image').files[0]; // File input
 
-        if (imageFile) {
-            const reader = new FileReader();
-            reader.onloadend = function() {
-                const imageUrl = reader.result; // Base64 data URL
+            // Check if the book already exists
+            const existingBook = booksData.find(book => book.isbn === isbn);
 
-                // Create a new book object
+            if (existingBook) {
+                alert('A book with this ISBN already exists.');
+                return;
+            }
+
+            // Read the image if it exists
+            if (imageFile) {
+                const reader = new FileReader();
+                reader.onloadend = function () {
+                    const imageUrl = reader.result; // Base64 data URL
+
+                    // Create a new book object
+                    const newBook = {
+                        title,
+                        isbn,
+                        author,
+                        price,
+                        category,
+                        language,
+                        description,
+                        publisher,
+                        images: [imageUrl] // Use the Base64 data URL
+                    };
+
+                    // Add the new book to booksData and save
+                    booksData.push(newBook);
+                    saveChangesToJson(booksData);
+                    initializeBookCards(booksData);
+                    productForm.reset();
+
+                    alert('Book added successfully!');
+                };
+
+                reader.readAsDataURL(imageFile); // Read image file as Data URL
+            } else {
+                // Create a new book object without an image
                 const newBook = {
                     title,
                     isbn,
@@ -61,43 +94,19 @@ if (productForm) {
                     language,
                     description,
                     publisher,
-                    images: [imageUrl] // Use the Base64 data URL
+                    images: [] // No image
                 };
 
-                
+                // Add the new book to booksData and save
                 booksData.push(newBook);
                 saveChangesToJson(booksData);
                 initializeBookCards(booksData);
                 productForm.reset();
 
                 alert('Book added successfully!');
-            };
-
-            reader.readAsDataURL(imageFile); // Read image file as Data URL
-        } else {
-            // Create a new book object without an image
-            const newBook = {
-                title,
-                isbn,
-                author,
-                price,
-                category,
-                language,
-                description,
-                publisher,
-                images: [] // No image
-            };
-
-            booksData.push(newBook);
-            saveChangesToJson(booksData);
-            initializeBookCards(booksData);
-            productForm.reset();
-
-            alert('Book added successfully!');
-        }
-    });
-}
-
+            }
+        });
+    }
 
     // Handle the update functionality
     const updateBookForm = document.getElementById('updateBookForm');
@@ -215,3 +224,6 @@ function handleDelete(book, cardElement) {
         alert(`${book.title} has been deleted.`);
     }
 }
+
+
+
