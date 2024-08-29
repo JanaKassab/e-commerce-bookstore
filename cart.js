@@ -16,47 +16,46 @@ const btnApplyCoupon = document.querySelector('.coupon-code button');
 const itemsContainer = document.querySelector('.items');
 // Pagination
 const linksContainer = document.querySelector('.page-number-container');
-
-// Variables
-const itemsExample = Array.from({ length: 5 }, () => ({
-  img: './48-laws-of-power-book.jpg',
-  alt: '48 laws of power',
-  name: '48 Laws of Power',
-  description:
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non optio quam laudantium officia, veniam animi.',
-  price: 10,
-}));
-
 const ITEMS_PER_PAGE = 3;
 let currentPage = 1;
 
+// Get Books from Local Storage
+const books = JSON.parse(localStorage.getItem('books')) || [];
+console.log(books);
 // Make discount initially display none
 divDiscount.style.display = 'none';
 
 // Functions
 
 // Function to display items based on the current page
-function displayItems(items) {
+function displayItems(books) {
   const h2Element = document.querySelector('.items h2');
 
   // Clear existing items
   const existingItems = document.querySelectorAll('.items .item');
   existingItems.forEach(item => item.remove());
 
+  // Check if there are any books in the local storage
+  if (!books) {
+    h2Element.textContent = 'Cart is Empty';
+    return;
+  }
+  // Destructure books
+  const [title, author, category, description, imgPath] = books;
   // Determine the range of items to display
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
-  const itemsToDisplay = items.slice(startIndex, endIndex);
+  const booksToDisplay = books.slice(startIndex, endIndex);
 
-  itemsToDisplay.forEach((item, index) => {
+  booksToDisplay.forEach((book, index) => {
     // Step 2: Create a new HTML element
     const newElement = document.createElement('div');
     newElement.innerHTML = `<!-- Single Product -->
           <div class="item-info">
-            <img src="${item.img}" alt="${item.alt}"/>
+            <img src="${book.img}" alt="${book.alt}"/>
             <div class="info">
-              <h4>${item.name}</h4>
-              <p>${item.description}</p>
+              <h4>${book.name}</h4>
+              <p>${book.description}</p>
             </div>
           </div>
           <div>
@@ -64,7 +63,7 @@ function displayItems(items) {
             <input class="qty-input" type="number" disabled value="0" />
             <button class="add-btn" data-action="add">+</button>
           </div>
-          <p>$${item.price}</p>
+          <p>$${book.price}</p>
           <button class="remove-btn" data-action="delete"></button>`;
     newElement.classList.add('item');
     newElement.dataset.index = startIndex + index;
@@ -97,15 +96,15 @@ function setActiveLink(event) {
   links.forEach(link => link.classList.remove('active'));
   event.target.classList.add('active');
   currentPage = parseInt(event.target.dataset.page);
-  displayItems(itemsExample);
+  displayItems(books);
 }
 
 // Function to go to the previous page
 function backBtn() {
   if (currentPage > 1) {
     currentPage--;
-    displayItems(itemsExample);
-    createLinks(itemsExample.length);
+    displayItems(books);
+    createLinks(books.length);
 
     // Scroll to the top of the items container
     document.querySelector('.items').scrollIntoView({ behavior: 'smooth' });
@@ -114,11 +113,11 @@ function backBtn() {
 
 // Function to go to the next page
 function nextBtn() {
-  const totalPages = Math.ceil(itemsExample.length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(books.length / ITEMS_PER_PAGE);
   if (currentPage < totalPages) {
     currentPage++;
-    displayItems(itemsExample);
-    createLinks(itemsExample.length);
+    displayItems(books);
+    createLinks(books.length);
 
     // Scroll to the top of the items container
     document.querySelector('.items').scrollIntoView({ behavior: 'smooth' });
@@ -145,8 +144,8 @@ function handleItemAction(itemId, action) {
 }
 
 // Call Functions
-displayItems(itemsExample);
-createLinks(itemsExample.length);
+displayItems(books);
+createLinks(books.length);
 
 // Event Listeners
 
