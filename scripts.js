@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Retrieve existing books from localStorage
-    let books = JSON.parse(localStorage.getItem('book')) || [];
+    let books = JSON.parse(localStorage.getItem('books')) || [];
 
     // Check if the book already exists in the cart
     let existingBookIndex = books.findIndex(
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Save the updated books array back to localStorage
-    localStorage.setItem('book', JSON.stringify(books));
+    localStorage.setItem('books', JSON.stringify(books));
 
     console.log(books);
   }
