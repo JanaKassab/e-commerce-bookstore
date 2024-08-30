@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+KutubHub
+  </title>
+  <link rel="stylesheet" href="kutubhub.css">
+  <link rel="shortcut icon" href="icons/books.ico.png" type="image/x-icon">
+  <link rel="stylesheet" href="general.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+</head>
+
+<body>
+  <header>
+    <div class="header1">
+      <div class="left-section">
+        <img src="icons/logo.png" alt="icon" class="logo">
+      </div>
+      
+      <div class="middle-section">
+        <div class="search-container">
+          <input type="text" id="searchInput" placeholder="Search for books...">
+          <button onclick="performSearch()">Search</button>
+          <ul id="resultsList">
+            <!-- Search results will be displayed here -->
+          </ul>
+        </div>
+      </div>
+      <div class="right-section">
+        <button class="sign-in">Sign In</button>
+        <img class="bascket" src="icons/icons8-cart-64.png" alt="bascket">
+        <img class="profile" src="icons/icons8-user-48.png" alt="profile">
+      </div>
+      
+    </div>
+
+      
+          <div class="header2">
+            <div><a href="#home">Home</a></div>
+            <div><a href="#books">Books</a></div>
+            <div><a href="#bestsellers">Bestsellers</a></div>
+            <div><a href="#trending">Trending</a></div>
+            <div><a href="#childrens-books">Children's Books</a></div>
+            <div><a href="#coming-soon">Coming Soon</a></div>
+           
+            
+          </div>
+
+      
+      </div> 
+
+     
+    
+</header>
+<!-- ----------------------------------------header------------------------------------------------->
+
+  <main>
+
+    <!-- -----------------------------------------------Hero Section ---------------------------------------->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Welcome to KutubHub</h1>
+    <p>Your gateway to a world of books</p>
+    <a href="#bestsellers" class="cta-btn">Shop Now</a>
+  </div>
+</section>
+
+    <!-- -----------------------------------------------Hero Section ---------------------------------------->
+
+
+    <!-- -----------------------------------------------bestseller-start---------------------------------------->
+    <section class="photo-gallery" id="bestsellers">
+      <h2 class="section-title">Bestsellers</h2>
+    
+      <div class="gallery-container">
+        <div class="gallery-item" id="book1" data-name="WATCH ME" data-author="Tahereh Mafi" data-category="Fiction">
+          <img src="images/bs1.jpg" alt="WATCH ME">
+          <div class="overlay">
+            <p>WATCH ME</p>
+            <h3>Tahereh Mafi</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+    
+        <div class="gallery-item" id="book2" data-name="WISTERIA" data-author="Adalyn Grace" data-category="Romance">
+          <img src="images/bs2.jpg" alt="WISTERIA">
+          <div class="overlay">
+            <p>WISTERIA</p>
+            <h3>Adalyn Grace</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+    
+        <div class="gallery-item" id="book3" data-name="GOOD ENERGY" data-author="Casey Means" data-category="Self-Help">
+          <img src="images/bs3.jpg" alt="GOOD ENERGY">
+          <div class="overlay">
+            <p>GOOD ENERGY</p>
+            <h3>Casey Means</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+    
+        <div class="gallery-item" id="book4" data-name="THE NEW COUPLE IN 58" data-author="Lisa Unger" data-category="Thriller">
+          <img src="images/bs4.jpg" alt="THE NEW COUPLE IN 58">
+          <div class="overlay">
+            <p>THE NEW COUPLE IN 58</p>
+            <h3>Lisa Unger</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+    
+        <div class="gallery-item" id="book5" data-name="THE MIRROR" data-author="Nora Roberts" data-category="Mystery">
+          <img src="images/bs5.jpg" alt="THE MIRROR">
+          <div class="overlay">
+            <p>THE MIRROR</p>
+            <h3>Nora Roberts</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+    
+        <div class="gallery-item" id="book6" data-name="THE BOOK OF BILL" data-author="Unknown" data-category="Biography">
+          <img src="images/bs6.jpg" alt="THE BOOK OF BILL">
+          <div class="overlay">
+            <p>THE BOOK OF BILL</p>
+            <h3>Unknown</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+    
+        <div class="gallery-item" id="book7" data-name="THE STRIKER" data-author="Ana Huang" data-category="Romance">
+          <img src="images/bs7.jpg" alt="THE STRIKER">
+          <div class="overlay">
+            <p>THE STRIKER</p>
+            <h3>Ana Huang</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+    
+        <div class="gallery-item" id="book8" data-name="IT ENDS WITH US" data-author="Colleen Hoover" data-category="Contemporary">
+          <img src="images/bs8.jpg" alt="IT ENDS WITH US">
+          <div class="overlay">
+            <p>IT ENDS WITH US</p>
+            <h3>Colleen Hoover</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+    
+        <div class="gallery-item" id="book9" data-name="THE WREN IN THE HOLY LIBRARY" data-author="K.A. Linde" data-category="Fantasy">
+          <img src="images/bs9.jpg" alt="THE WREN IN THE HOLY LIBRARY">
+          <div class="overlay">
+            <p>THE WREN IN THE HOLY LIBRARY</p>
+            <h3>K.A. Linde</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+    
+        <div class="gallery-item" id="book10" data-name="ONYX STORM" data-author="Rebecca Yarros" data-category="Romantic Suspense">
+          <img src="images/bs10.jpg" alt="ONYX STORM">
+          <div class="overlay">
+            <p>ONYX STORM</p>
+            <h3>Rebecca Yarros</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- -----------------------------------------------bestseller-end---------------------------------------->
+
+    <!-- -----------------------------------------------trending-start---------------------------------------->
+ 
+    <section class="photo-gallery" id="trending">
+      <h2 class="section-title">Trending</h2>
+    
+      <div class="gallery-container">
+        <div class="gallery-item" id="book11" data-name="THE HAMMER OF EDEN" data-author="Ken Follett" data-category="Thriller">
+          <img src="images/book1.jpeg" alt="THE HAMMER OF EDEN">
+          <div class="overlay">
+            <p>THE HAMMER OF EDEN</p>
+            <h3>Ken Follett</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" id="book2" data-name="BLUE BLOODED" data-author="Emma Jameson" data-category="Mystery">
+          <img src="images/book2.jpeg" alt="BLUE BLOODED">
+          <div class="overlay">
+            <p>BLUE BLOODED</p>
+            <h3>Emma Jameson</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" id="book3" data-name="THE BOOK THIEF" data-author="Markus Zusak" data-category="Historical Fiction">
+          <img src="images/book3.jpeg" alt="THE BOOK THIEF">
+          <div class="overlay">
+            <p>THE BOOK THIEF</p>
+            <h3>Markus Zusak</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" id="book4" data-name="STEVE JOBS" data-author="Walter Isaacson" data-category="Biography">
+          <img src="images/book4.jpg" alt="STEVE JOBS">
+          <div class="overlay">
+            <p>STEVE JOBS</p>
+            <h3>Walter Isaacson</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" id="book5" data-name="GONE GIRL" data-author="Gillian Flynn" data-category="Thriller">
+          <img src="images/book5.jpg" alt="GONE GIRL">
+          <div class="overlay">
+            <p>GONE GIRL</p>
+            <h3>Gillian Flynn</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" id="book6" data-name="THE GREAT GATSBY" data-author="F. Scott Fitzgerald" data-category="Classic">
+          <img src="images/book6.jpeg" alt="THE GREAT GATSBY">
+          <div class="overlay">
+            <p>THE GREAT GATSBY</p>
+            <h3>F. Scott Fitzgerald</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" id="book7" data-name="THE DAVINCI CODE" data-author="Dan Brown" data-category="Mystery">
+          <img src="images/book7.jpg" alt="THE DAVINCI CODE">
+          <div class="overlay">
+            <p>THE DAVINCI CODE</p>
+            <h3>Dan Brown</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" id="book8" data-name="THE SILENT PATIENT" data-author="Alex Michaelides" data-category="Psychological Thriller">
+          <img src="images/book8.jpeg" alt="THE SILENT PATIENT">
+          <div class="overlay">
+            <p>THE SILENT PATIENT</p>
+            <h3>Alex Michaelides</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" id="book9" data-name="LESSONS IN CHEMISTRY" data-author="Bonnie Garmus" data-category="Historical Fiction">
+          <img src="images/book9.jpeg" alt="LESSONS IN CHEMISTRY">
+          <div class="overlay">
+            <p>LESSONS IN CHEMISTRY</p>
+            <h3>Bonnie Garmus</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" id="book10" data-name="FOURTH WING" data-author="Rebecca Yarros" data-category="Fantasy">
+          <img src="images/book10.jpeg" alt="FOURTH WING">
+          <div class="overlay">
+            <p>FOURTH WING</p>
+            <h3>Rebecca Yarros</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+
+    <!-- -----------------------------------------------trending-end--------------------------------------->
+     <!---------------------------------------------Children's books------------------------------------------->
+
+
+     <section class="photo-gallery" id="childrens-books">
+      <h2 class="section-title">Children's books</h2>
+      <div class="gallery-container">
+        <div class="gallery-item" data-name="ASTRO CHIMPS" data-author="David Williams" data-id="ch1">
+          <img src="images/ch1.jpg" alt="Photo 1">
+          <div class="overlay">
+            <p>ASTRO CHIMPS</p>
+            <h3>David Williams</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" data-name="A SPOONFULL OF FROGS" data-author="Unknown" data-id="ch2">
+          <img src="images/ch2.jpg" alt="Photo 2">
+          <div class="overlay">
+            <p>A SPOONFULL OF FROGS</p>
+            <h3>Unknown</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" data-name="BFF DRAMAS" data-author="Katy Kibbie" data-id="ch3">
+          <img src="images/ch3.jpg" alt="Photo 3">
+          <div class="overlay">
+            <p>BFF DRAMAS</p>
+            <h3>Katy Kibbie</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" data-name="I AM TUC" data-author="Unknown" data-id="ch4">
+          <img src="images/ch4.jpg" alt="Photo 4">
+          <div class="overlay">
+            <p>I AM TUC</p>
+            <h3>Unknown</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" data-name="HAROLD LOVES HIS WOOLLY HAT" data-author="Vern Kousky" data-id="ch5">
+          <img src="images/ch5.jpg" alt="Photo 5">
+          <div class="overlay">
+            <p>HAROLD LOVES HIS WOOLLY HAT</p>
+            <h3>Vern Kousky</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" data-name="TAYLOR SWIFT" data-author="Maria Isabel" data-id="ch6">
+          <img src="images/ch6.webp" alt="Photo 6">
+          <div class="overlay">
+            <p>TAYLOR SWIFT</p>
+            <h3>Maria Isabel</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" data-name="TRY" data-author="Rob Burrow" data-id="ch7">
+          <img src="images/ch7.jpg" alt="Photo 7">
+          <div class="overlay">
+            <p>TRY</p>
+            <h3>Rob Burrow</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" data-name="THE SECRET SOCIETY" data-author="Dan Santat" data-id="ch8">
+          <img src="images/ch8.jpg" alt="Photo 8">
+          <div class="overlay">
+            <p>THE SECRET SOCIETY</p>
+            <h3>Dan Santat</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" data-name="FROM MY HEAD TO MY TOES" data-author="Bea Jackson" data-id="ch9">
+          <img src="images/ch9.jpg" alt="Photo 9">
+          <div class="overlay">
+            <p>FROM MY HEAD TO MY TOES</p>
+            <h3>Bea Jackson</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" data-name="BUNNY VS MUNKEY" data-author="Jamie Smarts" data-id="ch10">
+          <img src="images/ch10.jpg" alt="Photo 10">
+          <div class="overlay">
+            <p>BUNNY VS MUNKEY</p>
+            <h3>Jamie Smarts</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <!----------------------------coning soon---------------------------------------------------------------->
+    
+    <section class="photo-gallery" id="coming-soon">
+      <h2 class="section-title">Coming Soon</h2>
+      <div class="gallery-container">
+        <div class="gallery-item" data-name="NEXUS" data-author="Yuval Noah Harari" data-id="cs1">
+          <img src="images/cs1.webp" alt="Photo 1">
+          <div class="overlay">
+            <p>NEXUS</p>
+            <h3>Yuval Noah Harari</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" data-name="A MONSOON RISING" data-author="Thea Guanzon" data-id="cs2">
+          <img src="images/cs2.jpg" alt="Photo 2">
+          <div class="overlay">
+            <p>A MONSOON RISING</p>
+            <h3>Thea Guanzon</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" data-name="WE SOLVE MURDERS" data-author="Richard Osman" data-id="cs3">
+          <img src="images/cs3.webp" alt="Photo 3">
+          <div class="overlay">
+            <p>WE SOLVE MURDERS</p>
+            <h3>Richard Osman</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" data-name="THE WOODSMOKE WOMEN'S BOOK OF SMELLS" data-author="Rachel Greenlow" data-id="cs4">
+          <img src="images/cs4.jpg" alt="Photo 4">
+          <div class="overlay">
+            <p>THE WOODSMOKE WOMEN'S BOOK OF SMELLS</p>
+            <h3>Rachel Greenlow</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" data-name="THINK AGAIN" data-author="Jackline Wilson" data-id="cs5">
+          <img src="images/cs5.webp" alt="Photo 5">
+          <div class="overlay">
+            <p>THINK AGAIN</p>
+            <h3>Jackline Wilson</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" data-name="THE BOY, THE MOLE, THE FOX AND THE HORSE" data-author="Charlie Mackesy" data-id="cs6">
+          <img src="images/cs6.webp" alt="Photo 6">
+          <div class="overlay">
+            <p>THE BOY, THE MOLE, THE FOX AND THE HORSE</p>
+            <h3>Charlie Mackesy</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" data-name="THE BALLAD OF FALLING DRAGONS" data-author="Sarah Parker" data-id="cs7">
+          <img src="images/cs7.webp" alt="Photo 7">
+          <div class="overlay">
+            <p>THE BALLAD OF FALLING DRAGONS</p>
+            <h3>Sarah Parker</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" data-name="INTERMEZZO" data-author="Sally Rooney" data-id="cs8">
+          <img src="images/cs8.webp" alt="Photo 8">
+          <div class="overlay">
+            <p>INTERMEZZO</p>
+            <h3>Sally Rooney</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" data-name="IMPOSSIBLE CREATURES" data-author="Katherine Rundell" data-id="cs9">
+          <img src="images/cs9.webp" alt="Photo 9">
+          <div class="overlay">
+            <p>IMPOSSIBLE CREATURES</p>
+            <h3>Katherine Rundell</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+        <div class="gallery-item" data-name="THE BELL WITCHES" data-author="Lindsey Kelk" data-id="cs10">
+          <img src="images/cs10.jpg" alt="Photo 10">
+          <div class="overlay">
+            <p>THE BELL WITCHES</p>
+            <h3>Lindsey Kelk</h3>
+            <button>Check Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!----------------------------coning soon---------------------------------------------------------------->
+
+
+
+
+  </main>
+
+
+
+  <!----------------------------------------------footer--------------------------------------------->
+  <footer>
+   
+
+  <div class="footer-content">
+    
+    
+    <div class="footer-section about-us">
+      <h2>About Us</h2>
+      <p>Welcome to KutubHub, your destination for a world of stories and knowledge. Our passion for books drives us to curate a diverse selection, from bestsellers to hidden gems, catering to readers of all ages and interests.</p>
+    </div>
+    
+    <div class="footer-section quick-links">
+      <h2>Quick Links</h2>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Books</a></li>
+        <li><a href="#">Bestsellers</a></li>
+        <li><a href="#">Trending</a></li>
+        <li><a href="#">Children's Books</a></li>
+        <li><a href="#">Coming Soon</a></li>
+        <li><a href="#">Categories</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section follow-us">
+      <h2>Follow Us</h2>
+      <div class="socials">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  
+  </div>
+  
+ 
+ 
+</footer>
+<!-- ----------------------------------------footer------------------------------------------------->
+  
+<script src="main.js"></script>
+</body>
+</html>
