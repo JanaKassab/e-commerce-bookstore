@@ -29,7 +29,7 @@
   width: 200px;
   gap: 20px;
 }
-.bascket {
+.basket {
   width: 35px;
   height: 35px;
   margin-top: 10px;
@@ -49,7 +49,7 @@
   cursor: pointer;
 }
 
-.bascket:hover {
+.basket:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
   background-color: #800020;
   padding: 5px;
