@@ -1,0 +1,153 @@
+/*-----------------------------------Header-----starts------------------------------------*/
+
+.header1 {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #daa520;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.left-section {
+  align-items: center;
+  display: flex;
+  width: 250px;
+}
+.middle-section {
+  flex: 1;
+  margin: 0 30px 0 50px;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+}
+.right-section {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  gap: 20px;
+}
+.basket {
+  width: 35px;
+  height: 35px;
+  margin-top: 10px;
+  border-radius: 50px;
+  transition: background-color 0.3s;
+}
+.profile {
+  width: 35px;
+  height: 35px;
+  margin-top: 10px;
+  border-radius: 50px;
+  transition: background-color 0.3s;
+}
+.logo {
+  height: 140px;
+  width: 350px;
+  cursor: pointer;
+}
+
+.basket:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+  background-color: #800020;
+  padding: 5px;
+}
+.search-logo {
+  width: 30px;
+  height: 30px;
+  background-color: none;
+  border-radius: 50px;
+}
+.search-logo:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+}
+.profile:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+  background-color: #800020;
+  padding: 5px;
+}
+
+.search-bar {
+  flex: 1;
+  height: 30px;
+  padding-left: 15px;
+  border: 1px solid white;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.search-bar:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+}
+.search-bar::placeholder {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+.sign-in {
+  display: inline-block;
+  text-align: center;
+  padding: 0px 10px;
+  width: 70px;
+  height: 32px;
+  border-radius: 50px;
+  border: 1px solid --primary-color !important;
+  font-size: 15px;
+  background-color: var(--primary-color);
+  color: white;
+  font-style: bold;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.sign-in:hover {
+  background-color: #800020;
+  border: 1px solid #800020;
+  cursor: pointer;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+  width: 85px;
+  height: 35px;
+}
+.header2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  height: 40px;
+  gap: 50px;
+  z-index: 1;
+  width: auto;
+}
+
+.header2 div a {
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 10px;
+  position: relative;
+}
+
+.header2 div a::after {
+  content: " ";
+  position: absolute;
+  background-color: var(--background-color);
+  width: 100%;
+  height: 3px;
+  bottom: -3px;
+  left: 0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.header2 div a:hover {
+  color: var(--background-color);
+}
+.header2 div a:hover::after {
+  transform: scaleX(1);
+}
+
+/*--------------------------------header- ends------------------------------------------*/
