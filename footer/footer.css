@@ -65,4 +65,9 @@ footer {
   color: #800020;
 }
 
+a ,a:visited{
+        color: #fafafa; 
+        text-decoration: none; 
+}
+
 /*-----------------------------------footer-----ends------------------------------------*/

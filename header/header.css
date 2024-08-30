@@ -1,3 +1,14 @@
+:root {
+  --primary-color: #003366;
+  --secondary-color: #daa520;
+  --background-color: #fffff0;
+  --accent-color: #800020;
+  --neutral-color: #708090;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
 /*-----------------------------------Header-----starts------------------------------------*/
 
 .header1 {
@@ -91,13 +102,13 @@
   width: 70px;
   height: 32px;
   border-radius: 50px;
-  border: 1px solid --primary-color !important;
   font-size: 15px;
   background-color: var(--primary-color);
   color: white;
   font-style: bold;
   cursor: pointer;
   white-space: nowrap;
+  margin-top: 15px;
 }
 .sign-in:hover {
   background-color: #800020;
@@ -113,11 +124,13 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: var(--primary-color);
+  background-color: var(--primary-color) !important;
   height: 40px;
   gap: 50px;
-  z-index: 1;
+  font-family: Arial, Helvetica, sans-serif !important;
+
   width: auto;
+
 }
 
 .header2 div a {
@@ -129,6 +142,7 @@
   height: 100%;
   padding: 0 10px;
   position: relative;
+  
 }
 
 .header2 div a::after {
