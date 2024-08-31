@@ -14,11 +14,11 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error("Error loading navigation:", error));
 
     // Initialize books data
-    let storedData = localStorage.getItem('kutubhub_data');
+    let storedData = localStorage.getItem('../database/kutubhub_data');
     if (storedData) {
         booksData = JSON.parse(storedData).products;
     } else {
-        fetch('kutubhub_data.json')
+        fetch('../database/kutubhub_data.json')
             .then(response => response.json())
             .then(data => {
                 booksData = data.products;
@@ -208,7 +208,7 @@ function openUpdateModal(book) {
 // Function to save changes to JSON using localStorage
 function saveChangesToJson(updatedBooksData) {
     const updatedData = JSON.stringify({ products: updatedBooksData });
-    localStorage.setItem('kutubhub_data', updatedData);
+    localStorage.setItem('../database/kutubhub_data', updatedData);
 }
 
 // Handle the delete functionality

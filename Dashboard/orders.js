@@ -184,7 +184,7 @@ function saveOrders(orders) {
 }
 
 function loadBooksData() {
-    const storedData = localStorage.getItem('kutubhub_data');
+    const storedData = localStorage.getItem('../database/kutubhub_data');
     if (storedData) {
         booksData = JSON.parse(storedData).products;
     } else {

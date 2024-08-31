@@ -37,34 +37,34 @@ document
 
     // Find a matching user in the stored users array
     const user = storedUsers.find(
-  (user) => user.email === email && user.password === hashedPassword
-);
+      (user) => user.email === email && user.password === hashedPassword
+    );
 
-if (user) {
-  messageElement.textContent = "Login successful!";
-  messageElement.style.color = "green";
+    if (user) {
+      messageElement.textContent = "Login successful!";
+      messageElement.style.color = "green";
 
-  // Simulate authentication for admin user
-  if (user.username === "admin" && password === "password123") {
-    // Store authentication status
-    sessionStorage.setItem("isAuthenticated", true);
-    // Redirect to dashboard
-    window.location.href = "dashboard.html";
-  } else {
-    // For regular users, proceed normally
-    sessionStorage.setItem("isAuthenticated", true);
-    sessionStorage.setItem("loggedInUser", JSON.stringify(user));
+      // Simulate authentication for admin user
+      if (user.username === "admin" && password === "password123") {
+        // Store authentication status
+        sessionStorage.setItem("isAuthenticated", true);
+        // Redirect to dashboard
+        window.location.href = "../Dashboard/Dashboard.html";
+      } else {
+        // For regular users, proceed normally
+        sessionStorage.setItem("isAuthenticated", true);
+        sessionStorage.setItem("loggedInUser", JSON.stringify(user));
 
-    // Redirect to a different page, e.g., home page
-    setTimeout(() => {
-      window.location.href = "home.html"; // Redirect to your target page for regular users
-    }, 1000);
-  }
-} else {
-  messageElement.textContent = "Invalid email or password.";
-  messageElement.style.color = "red";
-}
-
+        // Redirect to a different page, e.g., home page
+        setTimeout(() => {
+          window.location.href = "home.html"; // Redirect to your target page for regular users
+        }, 1000);
+      }
+    } else {
+      messageElement.textContent = "Invalid email or password.";
+      messageElement.style.color = "red";
+    }
+  });
 
 document
   .getElementById("signupForm")
