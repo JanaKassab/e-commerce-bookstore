@@ -19,7 +19,7 @@ Author :FatimeGhazzawi
 a {
   text-decoration: none;
 }
-.update-btn{
+.update-btn {
   background-color: var(--primary-color);
   color: var(--background-color);
   border: none;
@@ -27,7 +27,7 @@ a {
   padding: 5px;
   cursor: pointer;
 }
-.delete-btn{
+.delete-btn {
   background-color: var(--secondary-color);
   color: var(--background-color);
   border: none;
@@ -36,14 +36,14 @@ a {
   cursor: pointer;
   margin-left: 2%;
 }
-.update-btn:hover{
+.update-btn:hover {
   background-color: var(--neutral-color);
 }
-.delete-btn:hover{
+.delete-btn:hover {
   background-color: var(--neutral-color);
 }
 .navigation {
-  flex: 1 1 200px; /* Flex-grow, flex-shrink, and flex-basis */
+  flex: 1 1 200px;
 }
 .container {
   display: flex;
@@ -89,6 +89,20 @@ ul {
   flex: 3 1 600px;
   padding: 1rem;
   background-color: var(--primary-color);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /*dashoboard main content*/
@@ -173,52 +187,6 @@ ul {
   color: var(--primary-color);
 }
 
-.low-stock-alerts {
-  background-color: var(--background-color);
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-}
-
-.low-stock-alerts h3 {
-  margin-bottom: 15px;
-  font-size: 18px;
-  color: var(--accent-color);
-}
-
-.alert-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.alert-card {
-  background-color: var(--background-color);
-  border-left: 5px solid var(--accent-color);
-  border-radius: 8px;
-  padding: 15px;
-  flex: 1;
-  min-width: 250px;
-  box-shadow: var(--box-shadow);
-}
-
-.product-name {
-  font-size: 16px;
-  font-weight: bold;
-  color: var(--accent-color);
-  margin-bottom: 8px;
-}
-
-.stock-info {
-  font-size: 14px;
-  color: var(--accent-color);
-}
-
-.stock-count {
-  font-size: 24px;
-  font-weight: bold;
-  color:var(--accent-color);
-}
 /*Product Page*/
 
 #ProductForm {
@@ -231,7 +199,7 @@ ul {
   margin-top: 2rem;
   width: 70%;
 }
-.title{
+.title {
   font-size: 24px;
   color: var(--secondary-color);
   display: flex;
@@ -306,7 +274,7 @@ input::placeholder {
   border: 1px solid #ddd;
   border-radius: 5px;
   width: 200px;
-  box-shadow:var(--box-shadow);
+  box-shadow: var(--box-shadow);
   text-align: center;
   overflow: hidden;
   height: 25rem;
@@ -340,7 +308,7 @@ input::placeholder {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   padding-top: 60px;
 }
 
@@ -403,18 +371,17 @@ input::placeholder {
 }
 
 .modal-content form button:hover {
-  background-color:var(--primary-color)
+  background-color: var(--primary-color);
 }
 
 /*order page*/
-.order-container{
+.order-container {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   margin: 3rem;
-
 }
-.order-card{
+.order-card {
   font-size: 1.2rem;
   padding: 10px;
   border: 1px solid var(--background-color);
@@ -423,26 +390,27 @@ input::placeholder {
   width: 18rem;
   max-height: 18rem;
   overflow: scroll;
+  scroll-behavior: smooth;
   text-align: center;
   background-color: var(--background-color);
 }
-#card-header{
+#card-header {
   color: var(--secondary-color);
   text-transform: uppercase;
 }
-.order-card p{
+.order-card p {
   color: var(--primary-color);
-  font-weight:700;
+  font-weight: 700;
 }
-.order-card p span{
+.order-card p span {
   color: var(--neutral-color);
   font-weight: 500;
 }
-.order-card:hover{
+.order-card:hover {
   background-color: #fffff0ae;
   cursor: pointer;
 }
-#add-order{
+#add-order {
   width: 30%;
   height: 2rem;
   margin-left: 3rem;
@@ -461,24 +429,7 @@ input::placeholder {
     display: inline-block;
   }
   .stat-card {
-    width: 100%; /* Stack cards vertically on smaller screens */
-    margin-bottom: 15px; /* Add spacing between stacked cards */
+    width: 100%;
+    margin-bottom: 15px;
   }
 }
-
-
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
