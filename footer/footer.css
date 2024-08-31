@@ -1,0 +1,66 @@
+/*-----------------------------------footer-----------------------------------------*/
+
+footer {
+  background-color: #003366;
+  color: white;
+  padding: 50px 10%; /* Reduced padding */
+  font-size: 14px; /* Reduced font size */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  width: 80%; /* Adjusted width */
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1;
+  padding: 10px 10px; /* Adjusted padding */
+}
+
+.footer-section h2 {
+  font-size: 18px; /* Slightly smaller font size */
+  margin-bottom: 15px; /* Reduced margin */
+}
+
+.footer-section p,
+.footer-section ul {
+  margin: 0;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px; /* Reduced margin */
+}
+
+.footer-section ul li a {
+  color: #fffff0;
+
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: #daa520;
+}
+
+.footer-section .socials a {
+  font-size: 18px; /* Slightly smaller font size */
+  margin-right: 8px; /* Reduced margin */
+  color: #fffff0;
+  transition: color 0.3s ease;
+}
+
+.footer-section .socials a:hover {
+  color: #daa520;
+}
+
+.section-title {
+  margin: 20px 45%;
+  max-width: 200px;
+  color: #800020;
+}
