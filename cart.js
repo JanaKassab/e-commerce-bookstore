@@ -9,7 +9,6 @@ const spanDiscount = document.getElementById('discount');
 const divDiscount = spanDiscount.parentElement.parentElement;
 const spanTotal = document.getElementById('total');
 const spanOldTotal = document.getElementById('oldTotal');
-const btnCheckout = document.querySelector('.cart-total button');
 // Coupon
 const inputCouponCode = document.getElementById('coupon-code');
 const btnApplyCoupon = document.querySelector('.coupon-code button');
@@ -202,6 +201,19 @@ function handleItemAction(itemId, action) {
   }
 }
 
+function checkout() {
+  // Go to Checkout.html
+  updateBooks();
+  window.location.href = 'checkout.html';
+}
+
+function clearCart() {
+  localStorage.removeItem('books');
+  books = JSON.parse(localStorage.getItem('books')) || [];
+  calculateFinalPrice();
+  updateUI();
+}
+
 function calculateTotalPrice() {
   let totalPrice = 0;
   books.forEach(book => {
@@ -314,11 +326,4 @@ btnApplyCoupon.addEventListener('click', () => {
   } else {
     handleInvalidCoupon('Invalid Coupon');
   }
-});
-
-// Target checkout btn
-btnCheckout.addEventListener('click', () => {
-  // Go to Checkout.html
-  updateBooks();
-  window.location.href = 'checkout.html';
 });
