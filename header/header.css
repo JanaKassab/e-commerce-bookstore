@@ -9,8 +9,6 @@
 }
 
 
-/*-----------------------------------Header-----starts------------------------------------*/
-
 .header1 {
   width: 100%;
   height: 70px;
@@ -73,6 +71,8 @@
 }
 .search-logo:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  background-color: #800020;
 }
 .profile:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
@@ -165,3 +165,4 @@
 }
 
 /*--------------------------------header- ends------------------------------------------*/
+
