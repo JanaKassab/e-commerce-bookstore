@@ -84,7 +84,7 @@ function displayRecommendations(category) {
                 <h4>${product.title}</h4>
                 <p>Price: ${product.price}$</p>
                 <button class="view-details">View Details</button>
-                <button class="add-to-cart">Add To Cart</button>
+                <button class="add-to-cart" >Add To Cart</button>
                 <div class="detailsR">
                     <p>Author: ${product.author}</p>
                     <p>Description: ${product.description}</p>
@@ -123,8 +123,8 @@ function createZoomContainer(imageElement) {
   container.style.position = "fixed";
   container.style.top = "0";
   container.style.left = "0";
-  container.style.width = "100%";
-  container.style.height = "100%";
+  container.style.width = "50%";
+  container.style.height = "50%";
   container.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
   container.style.display = "flex";
   container.style.alignItems = "center";
