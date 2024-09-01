@@ -74,6 +74,8 @@ function displayRecommendations(category) {
     (p) => p.category === category && p.specifications.ISBN !== getISBNFromURL()
   );
 
+  console.log("Recommended products:", recommendedProducts); // Debugging line
+
   if (recommendedProducts.length > 0) {
     recommendedProducts.forEach((product) => {
       const recommendationItem = document.createElement("div");
@@ -105,6 +107,8 @@ function displayRecommendations(category) {
 
       recommendedList.appendChild(recommendationItem);
     });
+  } else {
+    recommendedList.innerHTML = "<p>No recommendations available.</p>";
   }
 }
 
@@ -142,15 +146,134 @@ function createZoomContainer(imageElement) {
   });
 }
 
-function addToCart(isbn) {
-  const product = productsData.products.find(
-    (p) => p.specifications.ISBN === isbn
-  );
-  if (product) {
-    cart.push(product);
-    alert(`${product.title} has been added to your cart!`);
+// Add To Cart fn
+function addToCart(book) {
+  // Check if has prop, if not add
+  if (!book.quantity) {
+    book.quantity = 1;
+  } else {
+    book.quantity++;
   }
+  // Retrieve existing books from localStorage
+  let books = JSON.parse(localStorage.getItem("books")) || [];
+  // Check if the book already exists in the cart
+  let existingBookIndex = books.findIndex(
+    (b) => b.productId === book.productId
+  );
+  if (existingBookIndex !== -1) {
+    books[existingBookIndex].quantity = book.quantity;
+  } else {
+    books.push(book);
+    
+  }
+  // Save the updated books array back to localStorage
+  localStorage.setItem("books", JSON.stringify(books));
+  alert(`The book has been added to your cart!`);
+  console.log(books);
 }
+
+// bundles:
+// Static JSON data
+const jsonData = {
+  bundles: [
+    {
+      bundleId: 1,
+      products: [1, 2, 3],
+      bundleName: "Science and History Explorer Pack",
+      discount: "15%",
+      priceAfterDiscount: 51.98,
+    },
+  ],
+  products: [
+    {
+      productId: 1,
+      title: "The Hammer of Eden",
+      author: "Ken Follett",
+      description:
+        "A gripping thriller about a plan to cause an earthquake to destroy a city.",
+      price: 9.99,
+      category: "Thrillers",
+      images: ["../imgs/book1.jpeg"],
+    },
+    {
+      productId: 2,
+      title: "Blue Blooded",
+      author: "Toni Morrison",
+      description: "A powerful story exploring racial identity and heritage.",
+      price: 12.99,
+      category: "Literary Fiction",
+      images: ["../imgs/book2.jpeg"],
+    },
+    {
+      productId: 3,
+      title: "The Book Thief",
+      author: "../Markus Zusak",
+      description:
+        "A heart-wrenching tale set during World War II, narrated by Death.",
+      price: 10.99,
+      category: "Historical Fiction",
+      images: ["../imgs/book3.jpeg"],
+    },
+  ],
+};
+
+// Initialize cart
+let cart = [];
+
+// Function to handle adding a product to the cart
+
+function displayBundles() {
+  const bundlesSection = document.getElementById("bundles-section");
+
+  jsonData.bundles.forEach((bundle) => {
+    const bundleElement = document.createElement("div");
+    bundleElement.classList.add("bundle");
+
+    const bundleTitle = document.createElement("h2");
+    bundleTitle.textContent = bundle.bundleName;
+    bundleElement.appendChild(bundleTitle);
+
+    const productsContainer = document.createElement("div");
+    productsContainer.classList.add("products");
+
+    bundle.products.forEach((productId) => {
+      const product = jsonData.products.find((p) => p.productId === productId);
+
+      const productElement = document.createElement("div");
+      productElement.classList.add("product");
+
+      const img = document.createElement("img");
+      img.src = product.images[0];
+      img.alt = product.title;
+      productElement.appendChild(img);
+
+      const title = document.createElement("p");
+      title.textContent = product.title;
+      productElement.appendChild(title);
+
+      const addButton = document.createElement("button");
+      addButton.textContent = "Add to Cart";
+      addButton.addEventListener("click", () => addToCart(productId));
+      productElement.appendChild(addButton);
+
+      productsContainer.appendChild(productElement);
+    });
+
+    bundleElement.appendChild(productsContainer);
+
+    const discount = document.createElement("p");
+    discount.classList.add("discount");
+    discount.textContent = `Discount: ${
+      bundle.discount
+    } | Price After Discount: $${bundle.priceAfterDiscount.toFixed(2)}`;
+    bundleElement.appendChild(discount);
+
+    bundlesSection.appendChild(bundleElement);
+  });
+}
+
 
 // Load products when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", loadProductDetails);
+
+displayBundles();
