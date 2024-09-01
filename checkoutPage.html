@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout Form</title>
+    <link rel="stylesheet" href="checkout.css" />
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <span class="big-circle"></span>
+        <div class="form">
+            <div class="contact-info">
+                <h3 class="title">Let's get to checkout your order</h3>
+                <div class="order-summary">
+                    <p class="text">Your order is:</p>
+                    <ul id="book-list" class="book-list"></ul>
+                    <button class="btn back-btn" onclick="goBack()">Back</button> <!-- Added Back Button -->
+                </div>
+                <div class="info">ORDERRR</div>
+
+                <!-- Payment Options -->
+                <div class="input-container">
+                    <select id="payment-method" name="payment-method" class="input-container2" required onchange="togglePaymentMethod()">
+                        <option value="" disabled selected>Select Payment Method:</option>
+                        <option value="card">Credit/Debit Card</option>
+                        <option value="cod">Cash on Delivery</option>
+                    </select>
+                </div>
+
+                <!-- Card Payment Details -->
+                <div id="card-details" style="display: none;">
+                    <div class="input-container">
+                        <input type="text" id="card-number" name="card-number" class="input-container2" placeholder="Card Number" />
+                        <label for="card-number">Card Number</label>
+                        <span>Card Number</span>
+                    </div>
+                    <div class="input-container1">
+                        <input type="text" id="expiry-date" name="expiry-date" class="input-container2" placeholder="Expiry Date" />
+                        <label for="expiry-date">Expiry Date</label>
+                        <span>Expiry Date</span>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" id="cvv" name="cvv" class="input-container2" maxlength="4" placeholder="CVV" />
+                        <label for="cvv">CVV</label>
+                        <span>CVV</span>
+                    </div>
+                </div>
+
+                <!-- Cash on Delivery Details -->
+                <div id="cod-details" style="display: none;">
+                    <p>Pay with cash upon delivery.</p>
+                </div>
+
+            </div>
+
+            <div class="contact-form">
+                <form id="checkout-form" autocomplete="off" onsubmit="return validateCheckoutInfo();">
+                    <h3 class="title">Checkout</h3>
+
+                    <!-- User Information -->
+                    <div class="input-container">
+                        <input type="text" id="name" name="name" class="input" required />
+                        <label for="name">Full Name</label>
+                        <span>Full Name</span>
+                    </div>
+                    <div class="input-container">
+                        <input type="email" id="email" name="email" class="input" required />
+                        <label for="email">Email</label>
+                        <span>Email</span>
+                    </div>
+                    <div class="input-container">
+                        <input type="tel" id="phone" name="phone" class="input" maxlength="10" minlength="8" required />
+                        <label for="phone">Phone</label>
+                        <span>Phone</span>
+                    </div>
+
+                    <!-- Shipping Details -->
+                    <div class="input-container">
+                        <input type="text" id="address" name="address" class="input" required />
+                        <label for="address">Address</label>
+                        <span>Address</span>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" id="city" name="city" class="input" required />
+                        <label for="city">City</label>
+                        <span>City</span>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" id="zip-code" name="zip-code" class="input" required />
+                        <label for="zip-code">Zip Code</label>
+                        <span>Zip Code</span>
+                    </div>
+                    <div class="input-container">
+                        <select id="region" name="region" class="input" required>
+                            <option value="" disabled selected>Select a region in your country:</option>
+                            <option value="Beirut Governorate">بيروت (Beirut Governorate)</option>
+                            <option value="Mount Lebanon Governorate">جبل لبنان (Mount Lebanon Governorate)</option>
+                            <option value="North Lebanon Governorate">الشمال (North Lebanon Governorate)</option>
+                            <option value="Bekaa Governorate">البقاع (Bekaa Governorate)</option>
+                            <option value="South Lebanon Governorate">الجنوب (South Lebanon Governorate)</option>
+                            <option value="Nabatieh Governorate">النبطية (Nabatieh Governorate)</option>
+                            <option value="Baalbek-Hermel Governorate">بعلبك - الهرمل (Baalbek-Hermel Governorate)</option>
+                            <option value="Akkar Governorate">عكار (Akkar Governorate)</option>
+                        </select>
+                        <span>Region</span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <input type="submit" value="Send" class="btn" id="submit-btn" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="checkout.js"></script>
+</body>
+</html>
