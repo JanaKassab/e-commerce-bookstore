@@ -40,15 +40,15 @@
   gap: 20px;
 }
 .basket {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   margin-top: 10px;
   border-radius: 50px;
   transition: background-color 0.3s;
 }
 .profile {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   margin-top: 10px;
   border-radius: 50px;
   transition: background-color 0.3s;
@@ -63,6 +63,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
   background-color: #800020;
   padding: 5px;
+  cursor: pointer;
 }
 .search-logo {
   width: 30px;
@@ -79,6 +80,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
   background-color: #800020;
   padding: 5px;
+  cursor: pointer;
 }
 
 .search-bar {
