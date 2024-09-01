@@ -22,8 +22,6 @@ footer {
 .footer-section h2 {
   font-size: 18px;
   margin-bottom: 15px;
-  color: #fffff0;
-  display: flex;
 }
 
 .footer-section p,
@@ -67,4 +65,12 @@ footer {
   color: #800020;
 }
 
+a ,a:visited{
+        color: #fafafa; 
+        text-decoration: none; 
+}
+
 /*-----------------------------------footer-----ends------------------------------------*/
+
+
+
