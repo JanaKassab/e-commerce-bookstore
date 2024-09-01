@@ -19,7 +19,7 @@ Author :FatimeGhazzawi
 a {
   text-decoration: none;
 }
-.update-btn {
+.update-btn , .editBtn {
   background-color: var(--primary-color);
   color: var(--background-color);
   border: none;
@@ -27,7 +27,7 @@ a {
   padding: 5px;
   cursor: pointer;
 }
-.delete-btn {
+.delete-btn , .deleteBtn {
   background-color: var(--secondary-color);
   color: var(--background-color);
   border: none;
@@ -415,6 +415,35 @@ input::placeholder {
   height: 2rem;
   margin-left: 3rem;
 }
+
+/*User page*/
+
+
+#userForm {
+  margin-bottom: 20px;
+}
+
+#usersTable{
+  margin-top: 4rem;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#usersTable,#usersTable.th, #usersTable.td {
+  border: 1px solid var(--background-color);
+}
+
+#usersTable.th,td {
+  padding: 8px;
+  text-align: center;
+}
+
+#usersTable.th {
+  background-color: var(--background-color);
+}
+
+
+
 @media (max-width: 1000px) {
   .logo {
     width: 100%;
