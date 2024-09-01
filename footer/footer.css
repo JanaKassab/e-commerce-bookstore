@@ -22,6 +22,9 @@ footer {
 .footer-section h2 {
   font-size: 18px;
   margin-bottom: 15px;
+  display: flex;
+  color: #fffff0;
+  
 }
 
 .footer-section p,
