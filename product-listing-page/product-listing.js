@@ -44,6 +44,15 @@ document.addEventListener('DOMContentLoaded', function () {
         <p>${book.description}</p>
         <h2>$${book.price.toFixed(2)}</h2>
       `;
+
+      // Add click event listener to the image for redirection
+      const bookImage = bookCard.querySelector('img');
+      bookImage.addEventListener('click', function() {
+        window.location.href = `../Product-detail/detailedPage.html?isbn=${book.specifications.ISBN}`;
+
+      });
+
+
       const addToCartBtn = document.createElement('button');
       addToCartBtn.classList.add('add-to-cart-btn');
       addToCartBtn.textContent = 'Add to Cart';
