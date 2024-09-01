@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KutubHub | Users</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!--Navigation-->
+      <div id="Nav-placeholder" class="navigation"></div>
+
+      <div class="main-content">
+        <h1 class="title">Users Management</h1>
+    
+    <button id="addUserBtn" class="add-btn">Add User</button>
+    <div id="userForm" style="display:none;">
+        <input type="hidden" id="userId" />
+        <input type="text" id="userName" placeholder="Name" required/>
+        <input type="email" id="userEmail" placeholder="Email" required/>
+        <input type="text" id="userRole" placeholder="Role" required />
+        <button id="saveUserBtn" class="add-btn">Save</button>
+        <button id="cancelBtn" class="delete-btn">Cancel</button>
+    </div>
+
+    <table id="usersTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="usersTableBody">
+            <!-- User rows will be inserted here -->
+        </tbody>
+    </table>
+
+      </div>
+      </div>
+
+    <script src="ManageUser.js"></script>
+  </body>
+</html>
