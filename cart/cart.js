@@ -75,10 +75,12 @@ function displayBooks() {
           </div>
           <div>
             <button class="sub-btn" onclick="handleItemAction(${productId}, 'sub')">-</button>
-            <input class="qty-input" type="number" disabled value=${quantity} />
+            <input class="qty-input" type="number" disabled value=${
+              quantity ? quantity : 1
+            } />
             <button class="add-btn" onclick="handleItemAction(${productId}, 'add')">+</button>
           </div>
-          <p>$${price * quantity}</p>
+          <p>$${price * (quantity ? quantity : 1)}</p>
           <button class="remove-btn" onclick="handleItemAction(${productId}, 'delete')"></button>`;
     newElement.classList.add('item');
     // Step 3: Append the new element right after the <h2> element
@@ -179,6 +181,8 @@ function handleItemAction(itemId, action) {
   if (!action || !itemId) return;
 
   const book = books.find(book => book.productId === itemId);
+
+  if (!book.quantity) book.quantity = 1;
 
   if (book) {
     switch (action) {
