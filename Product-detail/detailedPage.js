@@ -2,11 +2,13 @@ let t = document.getElementById("specifications");
 let productsData = [];
 let cart = [];
 
-// Function to get ISBN from URL
 function getISBNFromURL() {
   const params = new URLSearchParams(window.location.search);
-  return params.get("isbn");
+  const isbn = params.get("isbn"); // Ensure 'isbn' parameter is retrieved correctly
+  console.log("ISBN from URL:", isbn); // Debugging output to check if the ISBN is being retrieved
+  return isbn;
 }
+
 
 async function loadProductDetails() {
   try {
@@ -33,9 +35,7 @@ async function loadProductDetails() {
 }
 
 // Call the function to load product details when the page loads
-loadProductDetails();
-
-t.style.display = "none";
+document.addEventListener("DOMContentLoaded", loadProductDetails);
 
 function displayProductDetails(product) {
   t.style.display = "flex";
@@ -86,17 +86,17 @@ function displayRecommendations(category) {
                 <h4>${product.title}</h4>
                 <p>Price: ${product.price}$</p>
                 <button class="view-details">View Details</button>
-                
-            
             `;
 
-      const detailsSection = recommendationItem.querySelector(".detailsR");
-      recommendationItem
-        .querySelector(".view-details")
-        .addEventListener("click", () => {
+      const viewDetailsButton =
+        recommendationItem.querySelector(".view-details");
+      if (viewDetailsButton) {
+        viewDetailsButton.addEventListener("click", () => {
           window.location.href = `detailedPage.html?isbn=${product.specifications.ISBN}`;
         });
-      
+      } else {
+        console.error("View Details button not found in recommendation item.");
+      }
 
       recommendedList.appendChild(recommendationItem);
     });
@@ -152,7 +152,6 @@ function addToCart(isbn) {
   }
 }
 
-
 const jsonData = {
   bundles: [
     {
@@ -195,6 +194,7 @@ const jsonData = {
     },
   ],
 };
+
 // Function to display bundles
 function displayBundle() {
   const bundleSection = document.getElementById("bundle-section");
@@ -215,11 +215,28 @@ function displayBundle() {
       <div class="bundle-pricing">
         <p class="discount">Discount: ${bundle.discount}</p>
         <h3>Price After Discount: $${bundle.priceAfterDiscount.toFixed(2)}</h3>
-        <button class="add-to-cart">Add To Cart</button>
+        <button class="add-to-cart" onclick="addToCart()">Add To Cart</button>
       </div>
     `;
-
     bundleContainer.appendChild(bundleHeader);
+
+    // Check if the button exists before adding the event listener
+    const addToCartButton = bundleContainer.querySelector(".add-to-cart");
+    if (addToCartButton) {
+      addToCartButton.addEventListener("click", () => {
+        // Define `product` based on the bundle
+        const product = jsonData.products.find(
+          (p) => p.productId === bundle.products[0]
+        ); // Adjust as needed
+        if (product) {
+          addToCart(product.specifications.ISBN);
+        } else {
+          console.error("Product not found for adding to cart.");
+        }
+      });
+    } else {
+      console.error("Add to Cart button not found in bundle.");
+    }
 
     // Bundle products
     const productList = document.createElement("div");
@@ -242,20 +259,22 @@ function displayBundle() {
             <p>Price: $${product.price.toFixed(2)}</p>
           </div>
           <div class="product-buttons">
-            
             <button class="view-details">View Details</button>
           </div>
         `;
 
-        
-
-        productItem
-          .querySelector(".view-details")
-          .addEventListener("click", () => {
-            window.location.href = `detailedPage.html?isbn=${product.specifications.ISBN}`;
+        const viewDetailsButton = productItem.querySelector(".view-details");
+        if (viewDetailsButton) {
+          viewDetailsButton.addEventListener("click", () => {
+            window.location.href = `detailedPage.html?isbn=${encodeURIComponent(product.specifications.ISBN)}`;
           });
+        } else {
+          console.error("View Details button not found in product item.");
+        }
 
         productList.appendChild(productItem);
+      } else {
+        console.error("Product not found for productId:", productId);
       }
     });
 
@@ -266,9 +285,3 @@ function displayBundle() {
 
 // Call the function to display bundles
 displayBundle();
-
-
-
-
-// Load products when the DOM is fully loaded
-document.addEventListener("DOMContentLoaded", loadProductDetails);

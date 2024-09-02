@@ -204,7 +204,7 @@ function handleItemAction(itemId, action) {
 function checkout() {
   // Go to Checkout.html
   updateBooks();
-  window.location.href = 'checkout.html';
+  window.location.href = '../Checkout/checkoutPage.html';
 }
 
 function clearCart() {
