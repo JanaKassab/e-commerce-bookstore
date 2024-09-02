@@ -37,6 +37,7 @@ async function loadProductDetails() {
 }
 // Call the function to load product details when the page loads
 document.addEventListener('DOMContentLoaded', loadProductDetails);
+
 function displayProductDetails(product) {
   t.style.display = 'flex';
   const productTitle = document.getElementById('product-title');
@@ -80,6 +81,7 @@ function displayRecommendations(category) {
                 <p>Price: ${product.price}$</p>
                 <button class="view-details">View Details</button>
             `;
+
       const viewDetailsButton =
         recommendationItem.querySelector('.view-details');
       if (viewDetailsButton) {
@@ -89,6 +91,7 @@ function displayRecommendations(category) {
       } else {
         console.error('View Details button not found in recommendation item.');
       }
+
       recommendedList.appendChild(recommendationItem);
     });
   }
@@ -155,6 +158,48 @@ function addToCart() {
   }
 }
 
+const jsonData = {
+  bundles: [
+    {
+      bundleId: 1,
+      products: [1, 2, 3],
+      bundleName: 'Science and History Explorer Pack',
+      discount: '15%',
+      priceAfterDiscount: 51.98,
+    },
+  ],
+  products: [
+    {
+      productId: 1,
+      title: 'The Hammer of Eden',
+      author: 'Ken Follett',
+      description:
+        'A gripping thriller about a plan to cause an earthquake to destroy a city.',
+      price: 9.99,
+      category: 'Thrillers',
+      images: ['../img/book1.jpeg'],
+    },
+    {
+      productId: 2,
+      title: 'Blue Blooded',
+      author: 'Toni Morrison',
+      description: 'A powerful story exploring racial identity and heritage.',
+      price: 12.99,
+      category: 'Literary Fiction',
+      images: ['../img/book2.jpeg'],
+    },
+    {
+      productId: 3,
+      title: 'The Book Thief',
+      author: 'Markus Zusak',
+      description:
+        'A heart-wrenching tale set during World War II, narrated by Death.',
+      price: 10.99,
+      category: 'Historical Fiction',
+      images: ['../img/book3.jpeg'],
+    },
+  ],
+};
 // Function to display bundles
 function displayBundle() {
   const bundleSection = document.getElementById('bundle-section');
@@ -177,23 +222,7 @@ function displayBundle() {
       </div>
     `;
     bundleContainer.appendChild(bundleHeader);
-    // Check if the button exists before adding the event listener
-    const addToCartButton = bundleContainer.querySelector('.add-to-cart');
-    if (addToCartButton) {
-      addToCartButton.addEventListener('click', () => {
-        // Define `product` based on the bundle
-        const product = jsonData.products.find(
-          p => p.productId === bundle.products[0]
-        ); // Adjust as needed
-        if (product) {
-          addToCart(product.specifications.ISBN);
-        } else {
-          console.error('Product not found for adding to cart.');
-        }
-      });
-    } else {
-      console.error('Add to Cart button not found in bundle.');
-    }
+
     // Bundle products
     const productList = document.createElement('div');
     productList.classList.add('products');
@@ -215,6 +244,7 @@ function displayBundle() {
             <button class="view-details">View Details</button>
           </div>
         `;
+
         const viewDetailsButton = productItem.querySelector('.view-details');
         if (viewDetailsButton) {
           viewDetailsButton.addEventListener('click', () => {
@@ -225,6 +255,7 @@ function displayBundle() {
         } else {
           console.error('View Details button not found in product item.');
         }
+
         productList.appendChild(productItem);
       } else {
         console.error('Product not found for productId:', productId);
