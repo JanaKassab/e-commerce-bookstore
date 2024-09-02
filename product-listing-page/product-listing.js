@@ -45,22 +45,12 @@ document.addEventListener('DOMContentLoaded', function () {
         <h2>$${book.price.toFixed(2)}</h2>
       `;
 
-      function addClickEventForBookImages() {
-        const bookImages = document.querySelectorAll(".book-card img");
-        bookImages.forEach((img) => {
-          img.addEventListener("click", function () {
-            const productId = img
-              .closest(".book-card")
-              .getAttribute("data-product-id");
-            window.location.href = `detailedPage.html?productId=${productId}`;
-          });
-        });
-      }
+      // Add click event listener to the image for redirection
+      const bookImage = bookCard.querySelector('img');
+      bookImage.addEventListener('click', function() {
+        window.location.href = `../Product-detail/detailedPage.html?isbn=${book.specifications.ISBN}`;
 
-      // Call this function after generating book cards
-      generateBookCards(bookData);
-      addClickEventForBookImages();
-
+      });
 
 
       const addToCartBtn = document.createElement('button');

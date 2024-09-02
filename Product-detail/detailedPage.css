@@ -287,7 +287,7 @@ html {
 }
 
 /* Bundles Section */
-#bundles-section {
+#bundle-section {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -301,29 +301,31 @@ html {
     border-radius: 10px;
     background-color: #fff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.bundle-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.bundle-info {
+    flex: 1;
+}
+
+.bundle-pricing {
+    text-align: right;
 }
 
 .bundle h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    font-size: 2.4rem;
+    margin: 0;
     color: #DAA520;
-}
-
-.bundle .products {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.bundle .product {
-    flex: 1;
-    text-align: center;
-}
-
-.bundle .product img {
-    max-width: 120px;
-    height: auto;
-    margin-bottom: 10px;
+    font-weight: bold;
+    
 }
 
 .bundle .discount {
@@ -333,19 +335,63 @@ html {
     color: #DAA520;
 }
 
-.bundle .product button {
-    padding: 8px 15px;
-    border: none;
-    background-color: #DAA520;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: background-color 0.3s;
+.bundle h3 {
+    font-size: 1.8rem;
+    color: #228B22;
 }
 
-.bundle .product button:hover {
+/* Product List */
+.bundle .products {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.bundle .product-item {
+    flex: 1;
+    text-align: center;
+}
+
+.bundle .product-item img {
+    max-width: 120px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bundle .product-item img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.bundle .product-item h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.bundle .product-item p {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.bundle .product-item .add-to-cart {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #DAA520;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.4rem;
+    transition: background-color 0.3s, color 0.3s;
+    margin-bottom: 10px;
+}
+
+.bundle .product-item .add-to-cart:hover {
     background-color: #708090;
+    color: #fff;
+    font-weight: bold;
 }
 
 .r {
@@ -361,7 +407,7 @@ html {
 
 
 table{
-  display: flex;
+    display: flex;
     align-items: center;
     justify-content: space-around;
 }

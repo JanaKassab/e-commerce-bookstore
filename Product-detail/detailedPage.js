@@ -1,5 +1,6 @@
 let t = document.getElementById("specifications");
 let productsData = [];
+let cart = [];
 
 // Function to get ISBN from URL
 function getISBNFromURL() {
@@ -15,6 +16,7 @@ async function loadProductDetails() {
       throw new Error("Network response was not ok");
     }
     productsData = await response.json(); // Store the fetched data globally
+    console.log("Products Data Loaded:", productsData); // Debugging
     const product = productsData.products.find(
       (book) => book.specifications.ISBN === isbn
     );
@@ -74,8 +76,6 @@ function displayRecommendations(category) {
     (p) => p.category === category && p.specifications.ISBN !== getISBNFromURL()
   );
 
-  console.log("Recommended products:", recommendedProducts); // Debugging line
-
   if (recommendedProducts.length > 0) {
     recommendedProducts.forEach((product) => {
       const recommendationItem = document.createElement("div");
@@ -86,7 +86,7 @@ function displayRecommendations(category) {
                 <h4>${product.title}</h4>
                 <p>Price: ${product.price}$</p>
                 <button class="view-details">View Details</button>
-                <button class="add-to-cart" >Add To Cart</button>
+                <button class="add-to-cart">Add To Cart</button>
                 <div class="detailsR">
                     <p>Author: ${product.author}</p>
                     <p>Description: ${product.description}</p>
@@ -107,8 +107,6 @@ function displayRecommendations(category) {
 
       recommendedList.appendChild(recommendationItem);
     });
-  } else {
-    recommendedList.innerHTML = "<p>No recommendations available.</p>";
   }
 }
 
@@ -127,8 +125,8 @@ function createZoomContainer(imageElement) {
   container.style.position = "fixed";
   container.style.top = "0";
   container.style.left = "0";
-  container.style.width = "50%";
-  container.style.height = "50%";
+  container.style.width = "100%";
+  container.style.height = "100%";
   container.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
   container.style.display = "flex";
   container.style.alignItems = "center";
@@ -146,34 +144,22 @@ function createZoomContainer(imageElement) {
   });
 }
 
-// Add To Cart fn
-function addToCart(book) {
-  // Check if has prop, if not add
-  if (!book.quantity) {
-    book.quantity = 1;
-  } else {
-    book.quantity++;
-  }
-  // Retrieve existing books from localStorage
-  let books = JSON.parse(localStorage.getItem("books")) || [];
-  // Check if the book already exists in the cart
-  let existingBookIndex = books.findIndex(
-    (b) => b.productId === book.productId
+function addToCart(isbn) {
+  console.log("Adding to cart:", isbn); // Debugging
+  const product = productsData.products.find(
+    (p) => p.specifications.ISBN === isbn
   );
-  if (existingBookIndex !== -1) {
-    books[existingBookIndex].quantity = book.quantity;
+  if (product) {
+    console.log("Product found:", product); // Debugging
+    cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart)); // Save to localStorage
+    alert(`${product.title} has been added to your cart!`);
   } else {
-    books.push(book);
-    
+    console.error("Product not found for ISBN:", isbn); // Error logging
   }
-  // Save the updated books array back to localStorage
-  localStorage.setItem("books", JSON.stringify(books));
-  alert(`The book has been added to your cart!`);
-  console.log(books);
 }
 
-// bundles:
-// Static JSON data
+
 const jsonData = {
   bundles: [
     {
@@ -193,7 +179,7 @@ const jsonData = {
         "A gripping thriller about a plan to cause an earthquake to destroy a city.",
       price: 9.99,
       category: "Thrillers",
-      images: ["../imgs/book1.jpeg"],
+      images: ["../img/book1.jpeg"],
     },
     {
       productId: 2,
@@ -202,78 +188,94 @@ const jsonData = {
       description: "A powerful story exploring racial identity and heritage.",
       price: 12.99,
       category: "Literary Fiction",
-      images: ["../imgs/book2.jpeg"],
+      images: ["../img/book2.jpeg"],
     },
     {
       productId: 3,
       title: "The Book Thief",
-      author: "../Markus Zusak",
+      author: "Markus Zusak",
       description:
         "A heart-wrenching tale set during World War II, narrated by Death.",
       price: 10.99,
       category: "Historical Fiction",
-      images: ["../imgs/book3.jpeg"],
+      images: ["../img/book3.jpeg"],
     },
   ],
 };
-
-// Initialize cart
-let cart = [];
-
-// Function to handle adding a product to the cart
-
-function displayBundles() {
-  const bundlesSection = document.getElementById("bundles-section");
+// Function to display bundles
+function displayBundle() {
+  const bundleSection = document.getElementById("bundle-section");
+  bundleSection.innerHTML = ""; // Clear any existing content
 
   jsonData.bundles.forEach((bundle) => {
-    const bundleElement = document.createElement("div");
-    bundleElement.classList.add("bundle");
+    // Create a container for each bundle
+    const bundleContainer = document.createElement("div");
+    bundleContainer.classList.add("bundle");
 
-    const bundleTitle = document.createElement("h2");
-    bundleTitle.textContent = bundle.bundleName;
-    bundleElement.appendChild(bundleTitle);
+    // Bundle header
+    const bundleHeader = document.createElement("div");
+    bundleHeader.classList.add("bundle-header");
+    bundleHeader.innerHTML = `
+      <div class="bundle-info">
+        <h2>${bundle.bundleName}</h2>
+      </div>
+      <div class="bundle-pricing">
+        <p class="discount">Discount: ${bundle.discount}</p>
+        <h3>Price After Discount: $${bundle.priceAfterDiscount.toFixed(2)}</h3>
+        <button class="add-to-cart">Add To Cart</button>
+      </div>
+    `;
 
-    const productsContainer = document.createElement("div");
-    productsContainer.classList.add("products");
+    bundleContainer.appendChild(bundleHeader);
+
+    // Bundle products
+    const productList = document.createElement("div");
+    productList.classList.add("products");
 
     bundle.products.forEach((productId) => {
       const product = jsonData.products.find((p) => p.productId === productId);
 
-      const productElement = document.createElement("div");
-      productElement.classList.add("product");
+      if (product) {
+        const productItem = document.createElement("div");
+        productItem.classList.add("product-item");
 
-      const img = document.createElement("img");
-      img.src = product.images[0];
-      img.alt = product.title;
-      productElement.appendChild(img);
+        productItem.innerHTML = `
+          <div class="product-image">
+            <img src="${product.images[0]}" alt="${product.title}">
+          </div>
+          <div class="product-details">
+            <h3>${product.title}</h3>
+            <p>Author: ${product.author}</p>
+            <p>Price: $${product.price.toFixed(2)}</p>
+          </div>
+          <div class="product-buttons">
+            
+            <button class="view-details">View Details</button>
+          </div>
+        `;
 
-      const title = document.createElement("p");
-      title.textContent = product.title;
-      productElement.appendChild(title);
+        
 
-      const addButton = document.createElement("button");
-      addButton.textContent = "Add to Cart";
-      addButton.addEventListener("click", () => addToCart(productId));
-      productElement.appendChild(addButton);
+        productItem
+          .querySelector(".view-details")
+          .addEventListener("click", () => {
+            window.location.href = `detailedPage.html?isbn=${product.specifications.ISBN}`;
+          });
 
-      productsContainer.appendChild(productElement);
+        productList.appendChild(productItem);
+      }
     });
 
-    bundleElement.appendChild(productsContainer);
-
-    const discount = document.createElement("p");
-    discount.classList.add("discount");
-    discount.textContent = `Discount: ${
-      bundle.discount
-    } | Price After Discount: $${bundle.priceAfterDiscount.toFixed(2)}`;
-    bundleElement.appendChild(discount);
-
-    bundlesSection.appendChild(bundleElement);
+    bundleContainer.appendChild(productList);
+    bundleSection.appendChild(bundleContainer);
   });
 }
+
+// Call the function to display bundles
+displayBundle();
+
+
 
 
 // Load products when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", loadProductDetails);
-
-displayBundles();
