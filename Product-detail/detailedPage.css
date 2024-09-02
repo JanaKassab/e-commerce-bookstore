@@ -22,7 +22,7 @@ html {
     justify-content: center;
 }
 
-//* Product Image Styles */
+/* Product Image Styles */
 .product-image {
     display: flex;
     justify-content: center; /* Center image horizontally */
@@ -162,23 +162,7 @@ html {
     font-weight: bold;
 }
 
-/* Details Section */
-.detailsR {
-    display: none; /* Hide by default */
-    font-weight: bold;
-    border-radius: 5px;
-    background-color: #708090;
-    color: #DAA520;
-    padding: 15px;
-    margin-top: 15px;
-    width: 100%;
-    text-align: left;
-}
 
-.detailsR.active {
-    display: block; /* Show when active */
-    flex-direction: column;
-}
 
 /* Recommended Section */
 .recommended-section {
@@ -217,8 +201,12 @@ html {
 }
 
 .recommendation-item:hover {
-    background-color: #f9f9f9;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  background-color: #f9f9f9;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  transition: flex-grow 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .recommendation-item img {
@@ -237,7 +225,8 @@ html {
 .recommendation-item p {
     font-size: 1.4rem;
     margin-bottom: 10px;
-    color: #666;
+    color: #228B22;
+    font-weight: bold;
 }
 
 .view-details,
@@ -255,7 +244,7 @@ html {
 
 .view-details:hover,
 .add-to-cart:hover {
-    background-color: #708090;
+    background-color: #003366;
     color: #fff;
     font-weight: bold;
 }

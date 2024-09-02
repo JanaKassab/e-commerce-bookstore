@@ -40,9 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
       bookCard.innerHTML = `
         <img src="${book.images[0]}" alt="${book.title} cover image">
         <h3>${book.title}</h3>
-        <p>${book.author}</p>
-        <p>${book.description}</p>
-        <h2>$${book.price.toFixed(2)}</h2>
+        <p>$${book.price.toFixed(2)}<p>
       `;
 
       // Add click event listener to the image for redirection
@@ -53,12 +51,15 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
 
-      const addToCartBtn = document.createElement('button');
-      addToCartBtn.classList.add('add-to-cart-btn');
-      addToCartBtn.textContent = 'Add to Cart';
-      addToCartBtn.onclick = () => addToCart(book);
+      const ViewDetailsBtn = document.createElement('button');
+      ViewDetailsBtn.classList.add('view-details');
+      ViewDetailsBtn.textContent = 'View Details';
+      ViewDetailsBtn.onclick = () =>
+        (window.location.href = `../Product-detail/detailedPage.html?isbn=${book.specifications.ISBN}`);
 
-      bookCard.appendChild(addToCartBtn);
+      
+
+      bookCard.appendChild(ViewDetailsBtn);
       bookGrid.appendChild(bookCard);
     });
   }

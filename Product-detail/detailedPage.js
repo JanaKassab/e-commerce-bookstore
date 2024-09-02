@@ -86,11 +86,8 @@ function displayRecommendations(category) {
                 <h4>${product.title}</h4>
                 <p>Price: ${product.price}$</p>
                 <button class="view-details">View Details</button>
-                <button class="add-to-cart">Add To Cart</button>
-                <div class="detailsR">
-                    <p>Author: ${product.author}</p>
-                    <p>Description: ${product.description}</p>
-                </div>
+                
+            
             `;
 
       const detailsSection = recommendationItem.querySelector(".detailsR");
@@ -99,11 +96,7 @@ function displayRecommendations(category) {
         .addEventListener("click", () => {
           window.location.href = `detailedPage.html?isbn=${product.specifications.ISBN}`;
         });
-      recommendationItem
-        .querySelector(".add-to-cart")
-        .addEventListener("click", () => {
-          addToCart(product.specifications.ISBN);
-        });
+      
 
       recommendedList.appendChild(recommendationItem);
     });

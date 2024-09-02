@@ -113,38 +113,42 @@ body {
 }
 
 .book-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 0 20px;
+    justify-content: center;
 }
 
 .book-card {
-  background: #fff;
-  position: relative;
-  border: 1px solid var(--neutral-color);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  padding: 20px;
-  padding-bottom: 60px;
-  text-align: center;
-  box-shadow: var(--box-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  flex-grow: 1;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    
 }
 
 .book-card:hover {
-  flex-grow: 7;
+  background-color: #f9f9f9;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  transform: scale(1.05);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  transform: scale(1.03);
   transition: flex-grow 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .book-card img {
-  width: 100%;
-  height: auto;
-  border-bottom: 1px solid var(--neutral-color);
-  margin-bottom: 15px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 .checkbox-group label {
@@ -157,35 +161,22 @@ body {
 }
 
 .book-card h3 {
+  overflow: break-word;
   margin: 10px 0 5px;
-  color: var(--primary-color);
+  font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .book-card p {
-  margin: 5px 0;
-  line-height: 1.5;
-  word-wrap: break-word;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-height: 4.5em;
+  font-size: 1.4rem;
   margin-top: 10px;
-}
-
-.book-card h2 {
-  color: var(--accent-color);
+  margin-bottom: 5px;
+  color: #228B22;
   font-weight: bold;
-  margin: 0;
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
-.book-card .old-price {
-  text-decoration: line-through;
-  color: var(--neutral-color);
-  margin-left: 10px;
-}
+
+
 
 
 .list-view-btn .book-card {
@@ -197,11 +188,14 @@ body {
 }
 
 .list-view-btn .book-card img {
-  width: 100px;
-  height: auto;
-  float: left;
-  margin-right: 15px;
+    width: 100px;
+    float: left;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
+
 
 .list-view-btn .book-card h3 {
   margin-top: 0px 40;
@@ -239,22 +233,31 @@ button {
   margin-top: 15px;
 }
 
-button:hover,
+
 #grid-view-btn:hover,
 #list-view-btn:hover {
   background-color: var(--primary-color);
 }
 
-.add-to-cart-btn {
-  position: absolute;
-  bottom: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  border: none;
-  border-radius: 4px;
-  padding: 10px 20px;
-  font-size: 14px;
-  white-space: nowrap;
+
+
+.view-details {
+    position: relative;
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #DAA520;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+    
+}
+
+.view-details:hover{
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: bold;
 }
 
 #result-count {
