@@ -92,14 +92,15 @@ form {
   margin: 1rem 0;
 }
 
+
 .input, 
 select {
   width: 100%;
   outline: none;
-  border: 2px solid #fafafa;
+  border: 2px solid #ffffff;
   background: none;
   padding: 0.6rem 1.2rem;
-  color: #fff;
+  color: #333;
   font-weight: 500;
   font-size: 0.95rem;
   border-radius: 25px;
@@ -120,7 +121,7 @@ textarea.input {
   left: 15px;
   transform: translateY(-50%);
   padding: 0 0.4rem;
-  color: #fafafa;
+  color: #ffffff;
   font-size: 0.9rem;
   font-weight: 400;
   pointer-events: none;
@@ -133,6 +134,8 @@ textarea.input {
 }
 
 .btn {
+  display: block;
+  margin: 0 auto;
   padding: 0.6rem 1.3rem;
   background-color: #fff;
   border: 2px solid #fafafa;
@@ -157,6 +160,7 @@ textarea.input {
   padding: 0 0.4rem;
   color: transparent;
   pointer-events: none;
+  z-index: -1;
 }
 
 .input-container span::before,
@@ -170,6 +174,8 @@ textarea.input {
   background-color: #daa520;
   top: 50%;
   transform: translateY(-50%);
+  
+  
 }
 
 .input-container span::before {
@@ -185,17 +191,22 @@ textarea.input {
   transform: translateY(-50%);
   left: 25px;
   font-size: 0.8rem;
+  background-color: #daa520;
+  
 }
 
 .input-container.focus span::before,
 .input-container.focus span::after {
   width: 50%;
+  background-color: transparent;
+  border: transparent;
   opacity: 1;
 }
 
 .contact-info {
   padding: 2.3rem 2.2rem;
   position: relative;
+  background-color: #fff;
 }
 
 .contact-info .title {
@@ -266,7 +277,7 @@ textarea.input {
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: linear-gradient(to bottom, #1cd4af, #daa520);
+  background: linear-gradient(to bottom, #003366, #daa520);
   bottom: 50%;
   right: 50%;
   transform: translate(-40%, 38%);
@@ -281,6 +292,7 @@ textarea.input {
   border-radius: 50%;
   top: calc(50% - 180px);
   left: calc(50% - 180px);
+  
 }
 
 .square {

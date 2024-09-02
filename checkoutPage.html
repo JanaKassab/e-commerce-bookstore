@@ -12,28 +12,28 @@
         <span class="big-circle"></span>
         <div class="form">
             <div class="contact-info">
-                <h3 class="title">Let's get to checkout your order</h3>
+                <h3 class="title">Let's get to checkout Your order</h3>
                 <div class="order-summary">
                     <p class="text">Your order is:</p>
                     <ul id="book-list" class="book-list"></ul>
-                    <button class="btn back-btn" onclick="goBack()">Back</button> <!-- Added Back Button -->
                 </div>
                 <div class="info">ORDERRR</div>
 
                 <!-- Payment Options -->
                 <div class="input-container">
                     <select id="payment-method" name="payment-method" class="input-container2" required onchange="togglePaymentMethod()">
-                        <option value="" disabled selected>Select Payment Method:</option>
+                        <option value="" disabled selected style="display: none;">Select Payment Method:</option>
                         <option value="card">Credit/Debit Card</option>
                         <option value="cod">Cash on Delivery</option>
                     </select>
+
                 </div>
 
                 <!-- Card Payment Details -->
                 <div id="card-details" style="display: none;">
                     <div class="input-container">
                         <input type="text" id="card-number" name="card-number" class="input-container2" placeholder="Card Number" />
-                        <label for="card-number">Card Number</label>
+                        <label for="card-number"></label>
                         <span>Card Number</span>
                     </div>
                     <div class="input-container1">
@@ -43,16 +43,18 @@
                     </div>
                     <div class="input-container">
                         <input type="text" id="cvv" name="cvv" class="input-container2" maxlength="4" placeholder="CVV" />
-                        <label for="cvv">CVV</label>
+                        <label for="cvv"></label>
                         <span>CVV</span>
                     </div>
                 </div>
 
                 <!-- Cash on Delivery Details -->
                 <div id="cod-details" style="display: none;">
-                    <p>Pay with cash upon delivery.</p>
+                    <p style="display:block ;">Pay with cash upon delivery.</p>
                 </div>
-
+                <div>
+                <button class="btn back-btn" onclick="goBack()">Back</button> <!-- Added Back Button -->
+                </div>
             </div>
 
             <div class="contact-form">
@@ -93,8 +95,8 @@
                         <span>Zip Code</span>
                     </div>
                     <div class="input-container">
-                        <select id="region" name="region" class="input" required>
-                            <option value="" disabled selected>Select a region in your country:</option>
+                        <select id="region" name="region"  class="input" class="input-container2"  onchange="togglePaymentMethod()" required>
+                            <option value="" disabled  selected style=" display: none;">Select a region in your country:</option>
                             <option value="Beirut Governorate">بيروت (Beirut Governorate)</option>
                             <option value="Mount Lebanon Governorate">جبل لبنان (Mount Lebanon Governorate)</option>
                             <option value="North Lebanon Governorate">الشمال (North Lebanon Governorate)</option>
