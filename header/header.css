@@ -83,21 +83,48 @@
   cursor: pointer;
 }
 
-.search-bar {
-  flex: 1;
-  height: 30px;
-  padding-left: 15px;
-  border: 1px solid white;
-  border-radius: 15px;
-  cursor: pointer;
-}
-.search-bar:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
-}
-.search-bar::placeholder {
-  font-family: Arial, Helvetica, sans-serif;
+
+
+/* Search input styling */
+#searchInput {
+  padding: 10px;
   font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 50px; /* Rounded corners */
+  width: 300px;
+  position: relative; /* Ensure it is positioned correctly within its container */
 }
+
+/* Search button styling */
+button {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 50px; /* Rounded corners */
+  background-color: #003366;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* Adjusted CSS for positioning the results list */
+#resultsList {
+  position: absolute; /* Ensure it is positioned absolutely */
+  top: 100%; /* Place it directly below the search input */
+  left: 0; /* Align to the left edge of the search input */
+  display: none; /* Initially hidden */
+  max-height: 400px; /* Set a maximum height for scrolling */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  border: 1px solid #ddd; /* Border around the results list */
+  padding: 10px; /* Adjust padding for spacing */
+  background-color: #f9f9f9; /* Background color for better readability */
+  width: 100%; /* Match width of the parent container */
+  box-sizing: border-box; /* Ensure padding and border are included in the width */
+  border-radius: 5px; /* Rounded corners for the results list */
+  z-index: 1000; /* Ensure it appears above other content */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow for better depth */
+}
+
 .sign-in {
   display: inline-block;
   text-align: center;

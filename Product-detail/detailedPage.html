@@ -23,15 +23,18 @@
         </div>
 
         <div class="middle-section">
-          <input type="text" class="search-bar" placeholder="Search..." />
-          <div>
-            <img
+          <div class="search-container">
+          <input type="" id="searchInput" oninput="performSearch()" placeholder="Search for books...">
+          <img onclick="performSearch()"
               class="search-logo"
               src="../icons/icons8-search-64.png"
               alt="search icon"
             />
-          </div>
+          <ul id="resultsList">
+            <!-- Search results will be displayed here -->
+          </ul>
         </div>
+      </div>
         <div class="right-section">
           <a href="../Login-Signup/login&SignUp.html">
             <button class="sign-in">Sign In</button>
@@ -148,5 +151,6 @@
     <!-- ----------------------------------------footer------------------------------------------------->
 
     <script src="detailedPage.js"></script>
+    <script src="../hompage/hompage.js"></script>
   </body>
 </html>
