@@ -45,7 +45,7 @@ document
       messageElement.style.color = "green";
 
       // Simulate authentication for admin user
-      if (user.username === "admin" && password === "password123") {
+      if (user.username === "admin@gmail.com" && password === "password123") {
         // Store authentication status
         sessionStorage.setItem("isAuthenticated", true);
         // Redirect to dashboard
@@ -55,9 +55,9 @@ document
         sessionStorage.setItem("isAuthenticated", true);
         sessionStorage.setItem("loggedInUser", JSON.stringify(user));
 
-        // Redirect to a different page, e.g., home page
+        // Redirect to a different page
         setTimeout(() => {
-          window.location.href = "home.html"; // Redirect to your target page for regular users
+          window.location.href = "../cart/cart.html"; // Redirect to your target page for regular users
         }, 1000);
       }
     } else {
@@ -134,7 +134,7 @@ document
 
       // Redirect to another page after a short delay
       setTimeout(() => {
-        window.location.href = "aboutUs.html"; // Change to your target page
+        window.location.href = "../homepage/homepage.html"; // Change to your target page
       }, 1000);
     }
   });

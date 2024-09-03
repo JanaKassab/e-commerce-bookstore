@@ -206,9 +206,18 @@ function handleItemAction(itemId, action) {
 }
 
 function checkout() {
-  // Go to Checkout.html
-  updateBooks();
-  window.location.href = '../Checkout/checkoutPage.html';
+
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  if (!loggedInUser) {
+    alert("You are not logged in");
+    window.location.href = "../Login-Signup/login&SignUp.html";
+    return;
+  } else {
+    // Go to Checkout.html
+    updateBooks();
+    window.location.href = '../Checkout/checkoutPage.html';
+  }
 }
 
 function clearCart() {

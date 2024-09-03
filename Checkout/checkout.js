@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Validate checkout information against stored user info
   function validateCheckoutInfo() {
-    const userName = localStorage.getItem('userName');
+    const userName = localStorage.getItem('user');
     const userAddress = localStorage.getItem('userAddress');
     const userEmail = localStorage.getItem('userEmail');
 
