@@ -212,9 +212,11 @@ function checkout() {
   if (!loggedInUser) {
     alert("You are not logged in");
     window.location.href = "../Login-Signup/login&SignUp.html";
-    return;
-  } else {
-    // Go to Checkout.html
+  
+  }
+  const userName = loggedInUser.username;
+  if (loggedInUser.username === userName) {
+    // If user is logged in, proceed to checkout
     updateBooks();
     window.location.href = '../Checkout/checkoutPage.html';
   }

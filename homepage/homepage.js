@@ -85,6 +85,10 @@ document.addEventListener('click', function(event) {
   }
 });// Perform the search and handle click on a search result
 function performSearch() {
+
+    console.log("performSearch function called");
+    
+
   const query = document.getElementById('searchInput').value.toLowerCase();
   const resultsList = document.getElementById('resultsList');
   const galleryItems = document.querySelectorAll('.gallery-item');

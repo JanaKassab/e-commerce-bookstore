@@ -25,13 +25,22 @@
         </div>
 
         <div class="middle-section">
-          <input type="text" class="search-bar" placeholder="Search..." />
-          <div>
+          <div class="search-container">
+            <input
+              type="text"
+              id="searchInput"
+              oninput="performSearch()"
+              placeholder="Search for books..."
+            />
             <img
+              onclick="performSearch()"
               class="search-logo"
               src="../icons/icons8-search-64.png"
               alt="search icon"
             />
+            <ul id="resultsList">
+              <!-- Search results will be displayed here -->
+            </ul>
           </div>
         </div>
         <div class="right-section">
@@ -123,7 +132,19 @@
         </div>
 
         <div class="footer-section follow-us">
-          <h2>Follow Us</h2>
+          <h2>Contact Us</h2>
+          <div id="contact-info"></div>
+              <ul>
+                  <li>
+                      <img src="../icons/phone.png" class="icon" alt="Phone icon" />
+                          +961 123 456
+                  </li>
+                  <li><a href="../Contact-Us/contactUs.html">Contact Us Form</a></li>
+              </ul>
+          </div>
+
+        <div class="footer-section">
+          <h2>Connect with us</h2>
           <div class="socials">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>

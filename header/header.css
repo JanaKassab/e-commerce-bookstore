@@ -9,6 +9,9 @@
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+*{
+  font-family:'Times New Roman', Times, serif;
+}
 
 .header1 {
   width: 100%;
@@ -70,6 +73,7 @@
   height: 30px;
   background-color: none;
   border-radius: 50px;
+  
 }
 .search-logo:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
@@ -95,17 +99,6 @@
   position: relative; /* Ensure it is positioned correctly within its container */
 }
 
-/* Search button styling */
-button {
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  border-radius: 50px; /* Rounded corners */
-  background-color: #003366;
-  color: white;
-  cursor: pointer;
-  margin-left: 10px;
-}
 
 /* Adjusted CSS for positioning the results list */
 #resultsList {
