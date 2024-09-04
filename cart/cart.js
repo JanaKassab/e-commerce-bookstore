@@ -206,13 +206,11 @@ function handleItemAction(itemId, action) {
 }
 
 function checkout() {
-
-  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
   if (!loggedInUser) {
-    alert("You are not logged in");
-    window.location.href = "../Login-Signup/login&SignUp.html";
-  
+    alert('You are not logged in');
+    window.location.href = '../Login-Signup/login&SignUp.html';
   }
   const userName = loggedInUser.username;
   if (loggedInUser.username === userName) {

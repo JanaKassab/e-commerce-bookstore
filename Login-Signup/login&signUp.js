@@ -1,34 +1,34 @@
-const sign_in_btn = document.querySelector("#sign-in-btn");
-const sign_up_btn = document.querySelector("#sign-up-btn");
-const container = document.querySelector(".container");
+const sign_in_btn = document.querySelector('#sign-in-btn');
+const sign_up_btn = document.querySelector('#sign-up-btn');
+const container = document.querySelector('.container');
 
-sign_up_btn.addEventListener("click", () => {
-  container.classList.add("sign-up-mode");
+sign_up_btn.addEventListener('click', () => {
+  container.classList.add('sign-up-mode');
 });
 
-sign_in_btn.addEventListener("click", () => {
-  container.classList.remove("sign-up-mode");
+sign_in_btn.addEventListener('click', () => {
+  container.classList.remove('sign-up-mode');
 });
 
 document
-  .getElementById("loginForm")
-  .addEventListener("submit", function (event) {
+  .getElementById('loginForm')
+  .addEventListener('submit', function (event) {
     event.preventDefault();
 
     // Get input values
-    const email = document.getElementById("loginEmail").value.trim();
-    const password = document.getElementById("loginPassword").value.trim();
-    const messageElement = document.getElementById("loginMessage");
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value.trim();
+    const messageElement = document.getElementById('loginMessage');
 
-    console.log("Email entered:", email);
-    console.log("Password entered:", password);
+    console.log('Email entered:', email);
+    console.log('Password entered:', password);
 
     // Retrieve users array from local storage
-    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
 
     if (storedUsers.length === 0) {
-      messageElement.textContent = "No account found. Please sign up first.";
-      messageElement.style.color = "red";
+      messageElement.textContent = 'No account found. Please sign up first.';
+      messageElement.style.color = 'red';
       return;
     }
 
@@ -37,77 +37,77 @@ document
 
     // Find a matching user in the stored users array
     const user = storedUsers.find(
-      (user) => user.email === email && user.password === hashedPassword
+      user => user.email === email && user.password === hashedPassword
     );
 
     if (user) {
-      messageElement.textContent = "Login successful!";
-      messageElement.style.color = "green";
+      messageElement.textContent = 'Login successful!';
+      messageElement.style.color = 'green';
 
       // Simulate authentication for admin user
-      if (user.username === "admin@gmail.com" && password === "password123") {
+      if (user.username === 'admin@gmail.com' && password === 'password123') {
         // Store authentication status
-        sessionStorage.setItem("isAuthenticated", true);
+        sessionStorage.setItem('isAuthenticated', true);
         // Redirect to dashboard
-        window.location.href = "../Dashboard/Dashboard.html";
+        window.location.href = '../Dashboard/Dashboard.html';
       } else {
         // For regular users, proceed normally
-        sessionStorage.setItem("isAuthenticated", true);
-        sessionStorage.setItem("loggedInUser", JSON.stringify(user));
+        sessionStorage.setItem('isAuthenticated', true);
+        sessionStorage.setItem('loggedInUser', JSON.stringify(user));
 
         // Redirect to a different page
         setTimeout(() => {
-          window.location.href = "../cart/cart.html"; // Redirect to your target page for regular users
+          window.location.href = '../cart/cart.html'; // Redirect to your target page for regular users
         }, 1000);
       }
     } else {
-      messageElement.textContent = "Invalid email or password.";
-      messageElement.style.color = "red";
+      messageElement.textContent = 'Invalid email or password.';
+      messageElement.style.color = 'red';
     }
   });
 
 document
-  .getElementById("signupForm")
-  .addEventListener("submit", function (event) {
+  .getElementById('signupForm')
+  .addEventListener('submit', function (event) {
     event.preventDefault();
 
     // Get form values
-    const username = document.getElementById("username").value.trim();
-    const email = document.getElementById("signupEmail").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const password = document.getElementById("signupPassword").value.trim();
+    const username = document.getElementById('username').value.trim();
+    const email = document.getElementById('signupEmail').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const password = document.getElementById('signupPassword').value.trim();
     const confirmPassword = document
-      .getElementById("confirmPassword")
+      .getElementById('confirmPassword')
       .value.trim();
-    const messageElement = document.getElementById("signupMessage");
+    const messageElement = document.getElementById('signupMessage');
 
     // Validation
     const errors = [];
     if (username.length < 3)
-      errors.push("Username must be at least 3 characters long.");
-    if (!validateEmail(email)) errors.push("Invalid email address.");
-    if (!validatePhone(phone)) errors.push("Invalid phone number.");
+      errors.push('Username must be at least 3 characters long.');
+    if (!validateEmail(email)) errors.push('Invalid email address.');
+    if (!validatePhone(phone)) errors.push('Invalid phone number.');
     if (password.length < 8)
-      errors.push("Password must be at least 8 characters long.");
-    if (password !== confirmPassword) errors.push("Passwords do not match.");
+      errors.push('Password must be at least 8 characters long.');
+    if (password !== confirmPassword) errors.push('Passwords do not match.');
 
     // Retrieve users array from localStorage
-    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
 
     // Check if email or phone already exists
-    const emailExists = storedUsers.some((user) => user.email === email);
-    const phoneExists = storedUsers.some((user) => user.phone === phone);
+    const emailExists = storedUsers.some(user => user.email === email);
+    const phoneExists = storedUsers.some(user => user.phone === phone);
 
     if (emailExists)
-      errors.push("Email already exists. Please use a different email.");
+      errors.push('Email already exists. Please use a different email.');
     if (phoneExists)
       errors.push(
-        "Phone number already exists. Please use a different phone number."
+        'Phone number already exists. Please use a different phone number.'
       );
 
     if (errors.length > 0) {
-      messageElement.innerHTML = errors.join("<br>");
-      messageElement.style.color = "red";
+      messageElement.innerHTML = errors.join('<br>');
+      messageElement.style.color = 'red';
     } else {
       // Hash the password before storing it
       const hashedPassword = CryptoJS.SHA256(password).toString();
@@ -124,17 +124,17 @@ document
       storedUsers.push(newUser);
 
       // Save the updated users array to localStorage
-      localStorage.setItem("users", JSON.stringify(storedUsers));
+      localStorage.setItem('users', JSON.stringify(storedUsers));
 
       // Also store the new user in 'user' key for backward compatibility
-      localStorage.setItem("user", JSON.stringify(newUser));
+      localStorage.setItem('loggedInUser', JSON.stringify(newUser));
 
-      messageElement.textContent = "Signup successful!";
-      messageElement.style.color = "green";
+      messageElement.textContent = 'Signup successful!';
+      messageElement.style.color = 'green';
 
       // Redirect to another page after a short delay
       setTimeout(() => {
-        window.location.href = "../homepage/homepage.html"; // Change to your target page
+        window.location.href = '../homepage/homepage.html'; // Change to your target page
       }, 1000);
     }
   });
