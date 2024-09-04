@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KutubHub - All Books</title>
+    <link rel="stylesheet" href="product-listing.css" />
+    <link rel="stylesheet" href="../header/header.css" />
+    <link rel="stylesheet" href="../footer/footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="../icons/books.ico.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Start of Header -->
+    <header>
+      <div class="header1">
+        <div class="left-section">
+          <a href="../homepage/homepage.html"
+            ><img src="../icons/logo.png" alt="icon" class="logo"
+          /></a>
+        </div>
+
+        <div class="middle-section">
+          <div class="search-container">
+            <input
+              type="text"
+              id="searchInput"
+              oninput="performSearch()"
+              placeholder="Search for books..."
+            />
+            <img
+              onclick="performSearch()"
+              class="search-logo"
+              src="../icons/icons8-search-64.png"
+              alt="search icon"
+            />
+            <ul id="resultsList">
+              <!-- Search results will be displayed here -->
+            </ul>
+          </div>
+        </div>
+
+        <div class="right-section">
+          <a href="../Login-Signup/login&SignUp.html">
+            <button class="sign-in">Sign In</button>
+          </a>
+          <a href="../cart/cart.html">
+            <img
+              class="basket"
+              src="../icons/icons8-cart-64.png"
+              alt="basket"
+            />
+          </a>
+          <img
+            class="profile"
+            src="../icons/icons8-user-48.png"
+            alt="profile"
+          />
+        </div>
+      </div>
+
+      <div class="header2">
+        <div><a href="../homepage/homepage.html">Home</a></div>
+        <div>
+          <a href="../product-listing-page/product-listing.html">All Books</a>
+        </div>
+        <div><a href="../homepage/homepage.html">Bestsellers</a></div>
+        <div><a href="../homepage/homepage.html">Trending</a></div>
+        <div><a href="../homepage/homepage.html">Children's Books</a></div>
+        <div><a href="../homepage/homepage.html">Coming Soon</a></div>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="sidebar">
+        <h2>Categories:</h2>
+        <div class="filter-controls">
+          <span id="selected-count">0 selected</span>
+          <button id="clear-all">Clear All</button>
+        </div>
+
+        <div class="your-categories-header">
+          <h3>Your Categories</h3>
+          <button id="select-all">Select All</button>
+        </div>
+
+        <div class="checkbox-group">
+          <label
+            ><input type="checkbox" value="Bestsellers" /> Bestsellers</label
+          >
+          <label
+            ><input type="checkbox" value="Biographies and Memoirs" />
+            Biographies and Memoirs</label
+          >
+          <label
+            ><input type="checkbox" value="Crime Fiction" /> Crime
+            Fiction</label
+          >
+          <label
+            ><input type="checkbox" value="General Nonfiction" /> General
+            Nonfiction</label
+          >
+          <label
+            ><input type="checkbox" value="Historical Fiction" /> Historical
+            Fiction</label
+          >
+          <label
+            ><input type="checkbox" value="Literary Fiction" /> Literary
+            Fiction</label
+          >
+          <label
+            ><input type="checkbox" value="Psychological Thrillers" />
+            Psychological Thrillers</label
+          >
+          <label><input type="checkbox" value="Thrillers" /> Thrillers</label>
+          <label
+            ><input type="checkbox" value="Romantic Fiction" /> Romantic
+            Fiction</label
+          >
+        </div>
+
+        <h3>All Categories</h3>
+        <div class="checkbox-group">
+          <label
+            ><input type="checkbox" value="Action and Adventure" /> Action and
+            Adventure</label
+          >
+          <label
+            ><input type="checkbox" value="Advice and How-To" /> Advice and
+            How-To</label
+          >
+          <label
+            ><input type="checkbox" value="American Historical Romance" />
+            American Historical Romance</label
+          >
+          <label
+            ><input type="checkbox" value="Black Stories & Experiences" /> Black
+            Stories & Experiences</label
+          >
+          <label><input type="checkbox" value="Business" /> Business</label>
+          <label><input type="checkbox" value="Children's" /> Children's</label>
+          <label
+            ><input type="checkbox" value="Christian Fiction" /> Christian
+            Fiction</label
+          >
+          <label
+            ><input type="checkbox" value="Christian Nonfiction" /> Christian
+            Nonfiction</label
+          >
+          <label><input type="checkbox" value="Classics" /> Classics</label>
+          <label
+            ><input type="checkbox" value="Contemporary Romance" /> Contemporary
+            Romance</label
+          >
+          <label><input type="checkbox" value="Cooking" /> Cooking</label>
+          <label
+            ><input type="checkbox" value="Cozy Mysteries" /> Cozy
+            Mysteries</label
+          >
+          <label
+            ><input type="checkbox" value="Dark Romance & Erotica" /> Dark
+            Romance & Erotica</label
+          >
+          <label
+            ><input type="checkbox" value="Erotic Romance" /> Erotic
+            Romance</label
+          >
+          <label><input type="checkbox" value="Fantasy" /> Fantasy</label>
+          <label
+            ><input type="checkbox" value="Historical Mysteries" /> Historical
+            Mysteries</label
+          >
+          <label
+            ><input type="checkbox" value="Historical Romance" /> Historical
+            Romance</label
+          >
+          <label><input type="checkbox" value="History" /> History</label>
+          <label><input type="checkbox" value="Horror" /> Horror</label>
+          <label><input type="checkbox" value="Humor" /> Humor</label>
+          <label
+            ><input type="checkbox" value="Middle Grade" /> Middle Grade</label
+          >
+          <label
+            ><input type="checkbox" value="New Adult Romance" /> New Adult
+            Romance</label
+          >
+          <label
+            ><input type="checkbox" value="Paranormal Romance" /> Paranormal
+            Romance</label
+          >
+          <label><input type="checkbox" value="Parenting" /> Parenting</label>
+          <label
+            ><input type="checkbox" value="Politics and Current Events" />
+            Politics and Current Events</label
+          >
+          <label
+            ><input type="checkbox" value="Religion and Spirituality" />
+            Religion and Spirituality</label
+          >
+          <label><input type="checkbox" value="Rom-Com" /> Rom-Com</label>
+          <label
+            ><input type="checkbox" value="Romantic Suspense" /> Romantic
+            Suspense</label
+          >
+          <label><input type="checkbox" value="Science" /> Science</label>
+          <label
+            ><input type="checkbox" value="Science Fiction" /> Science
+            Fiction</label
+          >
+          <label><input type="checkbox" value="Self-Help" /> Self-Help</label>
+          <label
+            ><input type="checkbox" value="Supernatural Suspense" />
+            Supernatural Suspense</label
+          >
+          <label
+            ><input type="checkbox" value="Teen and Young Adult" /> Teen and
+            Young Adult</label
+          >
+          <label
+            ><input type="checkbox" value="Time Travel Romance" /> Time Travel
+            Romance</label
+          >
+          <label><input type="checkbox" value="True Crime" /> True Crime</label>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="sorting">
+          <span id="result-count">0 results</span>
+          <div class="view-options">
+            <button id="grid-view-btn" class="active">Grid View</button>
+            <button id="list-view-btn">List View</button>
+          </div>
+          <div class="sort-options">
+            <span>Sort by</span>
+            <select id="sort-select">
+              <option value="latest">Latest</option>
+              <option value="price-low-to-high">Price: Low to High</option>
+              <option value="price-high-to-low">Price: High to Low</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="book-grid" id="book-grid">
+          <!-- Book cards will be dynamically generated here -->
+        </div>
+      </div>
+    </div>
+
+    <!----------------------------------------------footer--------------------------------------------->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section about-us">
+          <a href="../About-Us/aboutUs.html">
+            <h2>About Us</h2>
+          </a>
+          <p>
+            Welcome to KutubHub, your destination for a world of stories and
+            knowledge. Our passion for books drives us to curate a diverse
+            selection, from bestsellers to hidden gems, catering to readers of
+            all ages and interests.
+          </p>
+        </div>
+
+        <div class="footer-section quick-links">
+          <h2>Quick Links</h2>
+          <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li>
+              <a href="../product-listing-page/product-listing.html"
+                >All Books</a
+              >
+            </li>
+            <li><a href="../homepage/homepage.html">Bestsellers</a></li>
+            <li><a href="../homepage/homepage.html">Trending</a></li>
+            <li><a href="../homepage/homepage.html">Children's Books</a></li>
+            <li><a href="../homepage/hompage.html">Coming Soon</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section follow-us">
+          <h2>Contact Us</h2>
+          <div id="contact-info"></div>
+              <ul>
+                  <li>
+                      <img src="../icons/phone.png" class="icon" alt="Phone icon" />
+                          +961 123 456
+                  </li>
+                  <li><a href="../Contact-Us/contactUs.html">Contact Us Form</a></li>
+              </ul>
+          </div>
+
+        <div class="footer-section">
+          <h2>Connect with us</h2>
+          <div class="socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+    <!-- ----------------------------------------footer------------------------------------------------->
+
+    <script src="product-listing.js"></script>
+    <script src="../homepage/homepage.js"></script>
+  </body>
+</html>

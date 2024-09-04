@@ -1,0 +1,192 @@
+
+:root {
+  --primary-color: #003366;
+  --secondary-color: #daa520;
+  --background-color: #fffff0;
+  --accent-color: #800020;
+  --neutral-color: #708090;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+*{
+  font-family:'Times New Roman', Times, serif;
+}
+
+.header1 {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #daa520;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.left-section {
+  align-items: center;
+  display: flex;
+  width: 250px;
+}
+.middle-section {
+  flex: 1;
+  margin: 0 30px 0 50px;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+}
+.right-section {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  gap: 20px;
+}
+.basket {
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  border-radius: 50px;
+  transition: background-color 0.3s;
+}
+.profile {
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  border-radius: 50px;
+  transition: background-color 0.3s;
+}
+.logo {
+  height: 140px;
+  width: 350px;
+  cursor: pointer;
+}
+
+.basket:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+  background-color: #800020;
+  padding: 5px;
+  cursor: pointer;
+}
+.search-logo {
+  width: 30px;
+  height: 30px;
+  background-color: none;
+  border-radius: 50px;
+  
+}
+.search-logo:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  background-color: #800020;
+}
+.profile:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+  background-color: #800020;
+  padding: 5px;
+  cursor: pointer;
+}
+
+
+
+/* Search input styling */
+#searchInput {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 50px; /* Rounded corners */
+  width: 300px;
+  position: relative; /* Ensure it is positioned correctly within its container */
+}
+
+
+/* Adjusted CSS for positioning the results list */
+#resultsList {
+  position: absolute; /* Ensure it is positioned absolutely */
+  top: 100%; /* Place it directly below the search input */
+  left: 0; /* Align to the left edge of the search input */
+  display: none; /* Initially hidden */
+  max-height: 400px; /* Set a maximum height for scrolling */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  border: 1px solid #ddd; /* Border around the results list */
+  padding: 10px; /* Adjust padding for spacing */
+  background-color: #f9f9f9; /* Background color for better readability */
+  width: 100%; /* Match width of the parent container */
+  box-sizing: border-box; /* Ensure padding and border are included in the width */
+  border-radius: 5px; /* Rounded corners for the results list */
+  z-index: 1000; /* Ensure it appears above other content */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow for better depth */
+}
+
+.sign-in {
+  display: inline-block;
+  text-align: center;
+  padding: 0px 10px;
+  width: 70px;
+  height: 32px;
+  border-radius: 50px;
+  font-size: 15px;
+  background-color: var(--primary-color);
+  color: white;
+  font-style: bold;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-top: 15px;
+}
+.sign-in:hover {
+  background-color: #800020;
+  border: 1px solid #800020;
+  cursor: pointer;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+  width: 85px;
+  height: 35px;
+}
+.header2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color) !important;
+  height: 40px;
+  gap: 50px;
+  font-family: Arial, Helvetica, sans-serif !important;
+
+  width: auto;
+
+}
+
+.header2 div a {
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 10px;
+  position: relative;
+  
+}
+
+.header2 div a::after {
+  content: " ";
+  position: absolute;
+  background-color: var(--background-color);
+  width: 100%;
+  height: 3px;
+  bottom: -3px;
+  left: 0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.header2 div a:hover {
+  color: var(--background-color);
+}
+.header2 div a:hover::after {
+  transform: scaleX(1);
+}
+
+
+
+

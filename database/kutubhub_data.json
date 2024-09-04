@@ -1,0 +1,373 @@
+{
+  "products": [
+    {
+      "productId": 1,
+      "title": "The Hammer of Eden",
+      "author": "Ken Follett",
+      "description": "A gripping thriller about a plan to cause an earthquake to destroy a city.",
+      "price": 9.99,
+      "category": "Thrillers",
+      "specifications": {
+        "language": "English",
+        "pages": 432,
+        "publisher": "Crown Publishers",
+        "ISBN": "978-0-451-19219-9"
+      },
+      "images": ["../img/book1.jpeg"]
+    },
+    {
+      "productId": 2,
+      "title": "Blue Blooded",
+      "author": "Toni Morrison",
+      "description": "A powerful story exploring racial identity and heritage.",
+      "price": 12.99,
+      "category": "Literary Fiction",
+      "specifications": {
+        "language": "English",
+        "pages": 368,
+        "publisher": "Knopf",
+        "ISBN": "978-0-375-41154-6"
+      },
+      "images": ["../img/book2.jpeg"]
+    },
+    {
+      "productId": 3,
+      "title": "The Book Thief",
+      "author": "Markus Zusak",
+      "description": "A heart-wrenching tale set during World War II, narrated by Death.",
+      "price": 10.99,
+      "category": "Historical Fiction",
+      "specifications": {
+        "language": "English",
+        "pages": 552,
+        "publisher": "Alfred A. Knopf",
+        "ISBN": "978-0-375-83100-5"
+      },
+      "images": ["../img/book3.jpeg"]
+    },
+    {
+      "productId": 4,
+      "title": "Steve Jobs",
+      "author": "Walter Isaacson",
+      "description": "The biography of Steve Jobs, the co-founder of Apple Inc.",
+      "price": 14.99,
+      "category": "Biographies and Memoirs",
+      "specifications": {
+        "language": "English",
+        "pages": 656,
+        "publisher": "Simon & Schuster",
+        "ISBN": "978-1-4516-4853-9"
+      },
+      "images": ["../img/book4.jpg"]
+    },
+    {
+      "productId": 5,
+      "title": "Gone Girl",
+      "author": "Gillian Flynn",
+      "description": "A suspenseful thriller about a woman who goes missing on her wedding anniversary.",
+      "price": 11.99,
+      "category": "Psychological Thrillers",
+      "specifications": {
+        "language": "English",
+        "pages": 432,
+        "publisher": "Crown Publishing Group",
+        "ISBN": "978-0-307-58836-4"
+      },
+      "images": ["../img/book5.jpg"]
+    },
+    {
+      "productId": 6,
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "description": "A classic novel about the American dream and the decadence of the Jazz Age.",
+      "price": 8.99,
+      "category": "Classics",
+      "specifications": {
+        "language": "English",
+        "pages": 180,
+        "publisher": "Charles Scribner's Sons",
+        "ISBN": "978-0-7432-7356-5"
+      },
+      "images": ["../img/book6.jpeg"]
+    },
+    {
+      "productId": 7,
+      "title": "The Da Vinci Code",
+      "author": "Dan Brown",
+      "description": "A mystery thriller that delves into the secrets of the Catholic Church.",
+      "price": 10.49,
+      "category": "Crime Fiction",
+      "specifications": {
+        "language": "English",
+        "pages": 454,
+        "publisher": "Doubleday",
+        "ISBN": "978-0-385-50420-8"
+      },
+      "images": ["../img/book7.jpg"]
+    },
+    {
+      "productId": 8,
+      "title": "The Silent Patient",
+      "author": "Alex Michaelides",
+      "description": "A psychological thriller about a woman who stops speaking after a violent act.",
+      "price": 13.49,
+      "category": "Psychological Thrillers",
+      "specifications": {
+        "language": "English",
+        "pages": 336,
+        "publisher": "Celadon Books",
+        "ISBN": "978-1-250-30269-2"
+      },
+      "images": ["../img/book8.jpeg"]
+    },
+    {
+      "productId": 9,
+      "title": "Lessons in Chemistry",
+      "author": "Bonnie Garmus",
+      "description": "A novel about a female chemist who becomes an unlikely TV cooking show star in the 1960s.",
+      "price": 18.99,
+      "category": "Historical Fiction",
+      "specifications": {
+        "language": "English",
+        "pages": 400,
+        "publisher": "Doubleday",
+        "ISBN": "9780385547345"
+      },
+      "images": ["../img/book9.jpeg"]
+    },
+    {
+      "productId": 10,
+      "title": "Fourth Wing",
+      "author": "Rebecca Yarros",
+      "description": "An epic fantasy novel set in a world where dragon riders protect the realm from evil forces.",
+      "price": 24.99,
+      "category": "Fantasy",
+      "specifications": {
+        "language": "English",
+        "pages": 512,
+        "publisher": "Entangled Publishing",
+        "ISBN": "9781649374042"
+      },
+      "images": ["../img/book10.jpeg"]
+    },
+    {
+      "productId": 11,
+      "title": "Tomorrow, and Tomorrow, and Tomorrow",
+      "author": "Gabrielle Zevin",
+      "description": "A novel about two friends who collaborate on a video game, navigating love, loss, and the creative process.",
+      "price": 22.99,
+      "category": "Literary Fiction",
+      "specifications": {
+        "language": "English",
+        "pages": 416,
+        "publisher": "Knopf",
+        "ISBN": "9780593321201"
+      },
+      "images": ["../img/book11.jpeg"]
+    },
+    {
+      "productId": 12,
+      "title": "A Court of Silver Flames",
+      "author": "Sarah J. Maas",
+      "description": "The latest installment in the bestselling A Court of Thorns and Roses series, following the journey of Nesta Archeron.",
+      "price": 19.99,
+      "category": "Fantasy",
+      "specifications": {
+        "language": "English",
+        "pages": 768,
+        "publisher": "Bloomsbury Publishing",
+        "ISBN": "9781681196282"
+      },
+      "images": ["../img/book12.jpeg"]
+    },
+    {
+      "productId": 13,
+      "title": "The Last Thing He Told Me",
+      "author": "Laura Dave",
+      "description": "A mystery thriller about a woman whose husband disappears, leaving her with only one clue: protect her stepdaughter.",
+      "price": 16.99,
+      "category": "Thrillers",
+      "specifications": {
+        "language": "English",
+        "pages": 320,
+        "publisher": "Simon & Schuster",
+        "ISBN": "9781501171345"
+      },
+      "images": ["../img/book13.jpeg"]
+    },
+    {
+      "productId": 14,
+      "title": "The Midnight Library",
+      "author": "Matt Haig",
+      "description": "A novel about a library that offers people the chance to live different lives, exploring the infinite possibilities of their choices.",
+      "price": 17.99,
+      "category": "Fantasy",
+      "specifications": {
+        "language": "English",
+        "pages": 304,
+        "publisher": "Canongate Books",
+        "ISBN": "9780525559474"
+      },
+      "images": ["../img/book14.jpeg"]
+    },
+    {
+      "productId": 15,
+      "title": "Where the Crawdads Sing",
+      "author": "Delia Owens",
+      "description": "A novel about a young girl who grows up in the swamps of North Carolina, intertwined with a mysterious murder case.",
+      "price": 15.99,
+      "category": "Historical Fiction",
+      "specifications": {
+        "language": "English",
+        "pages": 384,
+        "publisher": "G.P. Putnam's Sons",
+        "ISBN": "9780735219106"
+      },
+      "images": ["../img/book15.jpeg"]
+    },
+    {
+      "productId": 16,
+      "title": "The Seven Husbands of Evelyn Hugo",
+      "author": "Taylor Jenkins Reid",
+      "description": "A fictional biography of a Hollywood star who reveals the truth about her glamorous and scandalous life.",
+      "price": 17.99,
+      "category": "Historical Fiction",
+      "specifications": {
+        "language": "English",
+        "pages": 400,
+        "publisher": "Atria Books",
+        "ISBN": "9781501161933"
+      },
+      "images": ["../img/book16.jpeg"]
+    },
+    {
+      "productId": 17,
+      "title": "Project Hail Mary",
+      "author": "Andy Weir",
+      "description": "A science fiction novel about an astronaut's desperate mission to save Earth from disaster.",
+      "price": 21.99,
+      "category": "Science Fiction",
+      "specifications": {
+        "language": "English",
+        "pages": 496,
+        "publisher": "Ballantine Books",
+        "ISBN": "9780593135204"
+      },
+      "images": ["../img/book17.jpeg"]
+    },
+    {
+      "productId": 18,
+      "title": "People We Meet on Vacation",
+      "author": "Emily Henry",
+      "description": "A romance novel about two best friends who reconnect during a summer vacation, facing unresolved feelings.",
+      "price": 14.99,
+      "category": "Romantic Fiction",
+      "specifications": {
+        "language": "English",
+        "pages": 384,
+        "publisher": "Berkley Books",
+        "ISBN": "9781984806758"
+      },
+      "images": ["../img/book18.jpeg"]
+    },
+    {
+      "productId": 19,
+      "title": "The Vanishing Half",
+      "author": "Brit Bennett",
+      "description": "A novel about twin sisters who choose to live in very different worlds, exploring themes of race and identity.",
+      "price": 16.99,
+      "category": "Historical Fiction",
+      "specifications": {
+        "language": "English",
+        "pages": 352,
+        "publisher": "Riverhead Books",
+        "ISBN": "9780525536291"
+      },
+      "images": ["../img/book19.jpeg"]
+    },
+    {
+      "productId": 20,
+      "title": "Atomic Habits",
+      "author": "James Clear",
+      "description": "A self-help book that teaches how small habits can lead to big changes in life.",
+      "price": 11.99,
+      "category": "Self-Help",
+      "specifications": {
+        "language": "English",
+        "pages": 320,
+        "publisher": "Avery",
+        "ISBN": "9780735211292"
+      },
+      "images": ["../img/book20.jpeg"]
+    }
+  ],
+  "categories": [
+    "Action and Adventure",
+    "Advice and How-To",
+    "American Historical Romance",
+    "Black Stories & Experiences",
+    "Business",
+    "Children's",
+    "Christian Fiction",
+    "Christian Nonfiction",
+    "Classics",
+    "Contemporary Romance",
+    "Cooking",
+    "Cozy Mysteries",
+    "Dark Romance & Erotica",
+    "Erotic Romance",
+    "Fantasy",
+    "Historical Mysteries",
+    "Historical Romance",
+    "History",
+    "Horror",
+    "Humor",
+    "Middle Grade",
+    "New Adult Romance",
+    "Paranormal Romance",
+    "Parenting",
+    "Politics and Current Events",
+    "Religion and Spirituality",
+    "Rom-Com",
+    "Romantic Suspense",
+    "Science",
+    "Science Fiction",
+    "Supernatural Suspense",
+    "Teen and Young Adult",
+    "Time Travel Romance",
+    "True Crime"
+  ],
+  "recommendations": [
+    {
+      "userId": 101,
+      "recommendedProducts": [
+        {
+          "productId": 2,
+          "reason": "Based on your interest in Historical Fiction"
+        },
+        {
+          "productId": 3,
+          "reason": "Because you liked Science books"
+        }
+      ]
+    },
+    {
+      "userId": 102,
+      "recommendedProducts": [
+        {
+          "productId": 1,
+          "reason": "Fans of Adventure will enjoy this"
+        }
+      ]
+    }
+  ],
+  "bundles": [
+    {
+      "bundleId": 1,
+      "products": [1, 2, 3],
+      "bundleName": "Science and History Explorer Pack",
+      "discount": "15%",
+      "priceAfterDiscount": 51.98
+    }
+  ]
+}
