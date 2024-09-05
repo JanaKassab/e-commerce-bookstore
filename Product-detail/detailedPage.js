@@ -311,7 +311,8 @@ function displayBundles() {
 }
 
 // Display bundles when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', displayBundles);
+//document.addEventListener('DOMContentLoaded', displayBundles);
+displayBundles();
 
 // To view the cart after adding items (for debugging)
 viewCart();
