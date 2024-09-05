@@ -276,7 +276,7 @@ html {
 }
 
 /* Bundles Section */
-#bundle-section {
+#bundles-section {
     display: flex;
     flex-direction: column;
     gap: 20px;
