@@ -45,7 +45,10 @@ document
       messageElement.style.color = "green";
 
       // Simulate authentication for admin user
-      if (user.username === "admin@gmail.com" && password === "password123") {
+      if (
+        user.email === "admin@gmail.com" &&
+        user.password === CryptoJS.SHA256("password123").toString()
+      ) {
         // Store authentication status
         sessionStorage.setItem("isAuthenticated", true);
         // Redirect to dashboard
