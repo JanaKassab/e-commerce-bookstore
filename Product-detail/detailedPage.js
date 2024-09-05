@@ -200,70 +200,120 @@ const jsonData = {
     },
   ],
 };
-// Function to display bundles
-function displayBundle() {
-  const bundleSection = document.getElementById('bundle-section');
-  bundleSection.innerHTML = ''; // Clear any existing content
-  jsonData.bundles.forEach(bundle => {
-    // Create a container for each bundle
-    const bundleContainer = document.createElement('div');
-    bundleContainer.classList.add('bundle');
-    // Bundle header
-    const bundleHeader = document.createElement('div');
-    bundleHeader.classList.add('bundle-header');
-    bundleHeader.innerHTML = `
-      <div class="bundle-info">
-        <h2>${bundle.bundleName}</h2>
-      </div>
-      <div class="bundle-pricing">
-        <p class="discount">Discount: ${bundle.discount}</p>
-        <h3>Price After Discount: $${bundle.priceAfterDiscount.toFixed(2)}</h3>
-        <button class="add-to-cart" onclick="addToCart()">Add To Cart</button>
-      </div>
-    `;
-    bundleContainer.appendChild(bundleHeader);
 
-    // Bundle products
-    const productList = document.createElement('div');
-    productList.classList.add('products');
-    bundle.products.forEach(productId => {
-      const product = jsonData.products.find(p => p.productId === productId);
-      if (product) {
-        const productItem = document.createElement('div');
-        productItem.classList.add('product-item');
-        productItem.innerHTML = `
-          <div class="product-image">
-            <img src="${product.images[0]}" alt="${product.title}">
-          </div>
-          <div class="product-details">
-            <h3>${product.title}</h3>
-            <p>Author: ${product.author}</p>
-            <p>Price: $${product.price.toFixed(2)}</p>
-          </div>
-          <div class="product-buttons">
-            <button class="view-details">View Details</button>
-          </div>
-        `;
-
-        const viewDetailsButton = productItem.querySelector('.view-details');
-        if (viewDetailsButton) {
-          viewDetailsButton.addEventListener('click', () => {
-            window.location.href = `detailedPage.html?isbn=${encodeURIComponent(
-              product.specifications.ISBN
-            )}`;
-          });
-        } else {
-          console.error('View Details button not found in product item.');
-        }
-
-        productList.appendChild(productItem);
-      } else {
-        console.error('Product not found for productId:', productId);
-      }
-    });
-    bundleContainer.appendChild(productList);
-    bundleSection.appendChild(bundleContainer);
-  });
+// Initialize cart if not already present
+function initializeCart() {
+    let cart = localStorage.getItem('cart');
+    if (!cart) {
+        localStorage.setItem('cart', JSON.stringify([]));
+    }
 }
-// Call the function to display bundles
-displayBundle();
+
+function addToCart(productId, quantity = 1) {  
+    // Ensure the cart is an array
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    if (!Array.isArray(cart)) {
+        cart = []; 
+    }
+    
+    // Get the product information from the products list
+    const product = jsonData.products.find(p => p.productId === productId);
+    
+    if (!product) {
+        console.error("Product not found");
+        return;
+    }
+
+    // Check if the product is already in the cart
+    const existingProductIndex = cart.findIndex(item => item.productId === productId);
+    
+    if (existingProductIndex !== -1) {
+        // If product exists in the cart, update the quantity
+        cart[existingProductIndex].quantity += quantity;
+        cart[existingProductIndex].priceTotal = cart[existingProductIndex].quantity * product.price;
+    } else {
+        // If product doesn't exist, add it to the cart with the quantity and total price
+        cart.push({
+            productId: product.productId,
+            title: product.title,
+            price: product.price,  // Store the price of each product
+            quantity: quantity,
+            priceTotal: product.price * quantity
+        });
+    }
+
+    // Save the updated cart back to local storage
+    localStorage.setItem('cart', JSON.stringify(cart));
+   viewCart();
+}
+// Function to view the current cart contents (for testing/debugging)
+function viewCart() {
+    const cart = JSON.parse(localStorage.getItem('cart'));
+    console.log(cart);
+}
+
+// Initialize cart on page load
+initializeCart();
+
+// Function to display bundles
+function displayBundles() {
+    const bundlesSection = document.getElementById('bundles-section');
+    bundlesSection.innerHTML = ''; // Clear existing content to prevent duplication
+
+    jsonData.bundles.forEach(bundle => {
+        const bundleElement = document.createElement('div');
+        bundleElement.classList.add('bundle');
+
+        const bundleTitle = document.createElement('h2');
+        bundleTitle.textContent = bundle.bundleName;
+        bundleElement.appendChild(bundleTitle);
+
+        const productsContainer = document.createElement('div');
+        productsContainer.classList.add('products');
+
+        bundle.products.forEach(productId => {
+            const product = jsonData.products.find(p => p.productId === productId);
+            if (product) {
+                const productElement = document.createElement('div');
+                productElement.classList.add('product');
+
+                const img = document.createElement('img');
+                img.src = product.images[0];
+                img.alt = product.title;
+                productElement.appendChild(img);
+
+                const title = document.createElement('p');
+                title.textContent = product.title;
+                productElement.appendChild(title);
+
+                const addButton = document.createElement('button');
+                addButton.textContent = 'Add to Cart';
+                
+                // Pass the correct quantity (1 in this case)
+                addButton.addEventListener('click', () => addToCart(product.productId, 1));
+                productElement.appendChild(addButton);
+
+                productsContainer.appendChild(productElement);
+            } else {
+                console.error(`Product with ID ${productId} not found in bundle.`);
+            }
+        });
+
+        bundleElement.appendChild(productsContainer);
+
+        const discount = document.createElement('p');
+        discount.classList.add('discount');
+        discount.textContent = `Discount: ${bundle.discount} | Price After Discount: $${bundle.priceAfterDiscount.toFixed(2)}`;
+        bundleElement.appendChild(discount);
+
+        bundlesSection.appendChild(bundleElement);
+    });
+}
+
+// Display bundles when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', displayBundles);
+
+// To view the cart after adding items (for debugging)
+viewCart();
+
+loadProducts();
