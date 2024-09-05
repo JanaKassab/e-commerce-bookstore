@@ -44,22 +44,21 @@ document
       messageElement.textContent = "Login successful!";
       messageElement.style.color = "green";
 
-      // Simulate authentication for admin user
-      if (user.username === "admin@gmail.com" && password === "password123") {
-        // Store authentication status
-        sessionStorage.setItem("isAuthenticated", true);
-        // Redirect to dashboard
-        window.location.href = "../Dashboard/Dashboard.html";
-      } else {
-        // For regular users, proceed normally
-        sessionStorage.setItem("isAuthenticated", true);
-        sessionStorage.setItem("loggedInUser", JSON.stringify(user));
+      messageElement.textContent = "Login successful!";
+      messageElement.style.color = "green";
 
-        // Redirect to a different page
-        setTimeout(() => {
-          window.location.href = "../cart/cart.html"; // Redirect to your target page for regular users
-        }, 1000);
-      }
+      // Store authentication status
+      sessionStorage.setItem("isAuthenticated", true);
+      sessionStorage.setItem("loggedInUser", JSON.stringify(user));
+
+      // Redirect based on role
+      setTimeout(() => {
+        if (user.role === "admin") {
+          window.location.href = "../Dashboard/Dashboard.html"; // Admin dashboard
+        } else {
+          window.location.href = "../cart/cart.html"; // Regular user page
+        }
+      }, 1000);
     } else {
       messageElement.textContent = "Invalid email or password.";
       messageElement.style.color = "red";
@@ -79,6 +78,7 @@ document
     const confirmPassword = document
       .getElementById("confirmPassword")
       .value.trim();
+    const role = document.getElementById("role").value.trim();
     const messageElement = document.getElementById("signupMessage");
 
     // Validation
@@ -118,6 +118,7 @@ document
         email: email,
         phone: phone,
         password: hashedPassword,
+        role: role,
       };
 
       // Add the new user to the stored users array
@@ -134,7 +135,11 @@ document
 
       // Redirect to another page after a short delay
       setTimeout(() => {
-        window.location.href = "../homepage/homepage.html"; // Change to your target page
+        if (newUser.role === "admin") {
+            window.location.href = "../Dashboard/Dashboard.html"; // Admin dashboard
+          } else {
+            window.location.href = "../homepage/homepage.html"; // Regular user page
+          }
       }, 1000);
     }
   });
