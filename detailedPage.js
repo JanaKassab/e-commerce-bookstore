@@ -260,17 +260,59 @@ const jsonData = {
   ],
 };
 
-// Initialize cart
-let cart = [];
-
-// Function to handle adding a product to the cart
-function addToCart(productId) {
-  const product = jsonData.products.find((p) => p.productId === productId);
-  if (product) {
-    cart.push(product);
-    alert(`${product.title} has been added to your cart!`);
-  }
+// Initialize cart if not already present
+function initializeCart() {
+    let cart = localStorage.getItem('cart');
+    if (!cart) {
+        localStorage.setItem('cart', JSON.stringify([]));
+    }
 }
+
+function addToCart(productId, quantity = 1) {  
+    // Ensure the cart is an array
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    if (!Array.isArray(cart)) {
+        cart = []; 
+    }
+    
+    // Get the product information from the products list
+    const product = jsonData.products.find(p => p.productId === productId);
+    
+    if (!product) {
+        console.error("Product not found");
+        return;
+    }
+
+    // Check if the product is already in the cart
+    const existingProductIndex = cart.findIndex(item => item.productId === productId);
+    
+    if (existingProductIndex !== -1) {
+        // If product exists in the cart, update the quantity
+        cart[existingProductIndex].quantity += quantity;
+        cart[existingProductIndex].priceTotal = cart[existingProductIndex].quantity * product.price;
+    } else {
+        // If product doesn't exist, add it to the cart with the quantity and total price
+        cart.push({
+            productId: product.productId,
+            title: product.title,
+            price: product.price,  // Store the price of each product
+            quantity: quantity,
+            priceTotal: product.price * quantity
+        });
+    }
+
+    // Save the updated cart back to local storage
+    localStorage.setItem('cart', JSON.stringify(cart));
+   viewCart();
+}
+// Function to view the current cart contents (for testing/debugging)
+function viewCart() {
+    const cart = JSON.parse(localStorage.getItem('cart'));
+    console.log(cart);
+}
+
+// Initialize cart on page load
+initializeCart();
 
 function displayBundles() {
   const bundlesSection = document.getElementById("bundles-section");
@@ -303,7 +345,7 @@ function displayBundles() {
 
       const addButton = document.createElement("button");
       addButton.textContent = "Add to Cart";
-      addButton.addEventListener("click", () => addToCart(productId));
+      addButton.addEventListener("click", () => addToCart(product.productId, 1));
       productElement.appendChild(addButton);
 
       productsContainer.appendChild(productElement);
