@@ -303,7 +303,7 @@ function addToCart(productId, quantity = 1) {
 
     // Save the updated cart back to local storage
     localStorage.setItem('cart', JSON.stringify(cart));
-   viewCart();
+   viewCart(); // we can remove this but in this case we need to refresh to see the new quantity and total price!
 }
 // Function to view the current cart contents (for testing/debugging)
 function viewCart() {
