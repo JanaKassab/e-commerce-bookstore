@@ -1,4 +1,6 @@
 # KutubHub - E-commerce Website Project
+![KutubHub Logo](icons/logo.png)
+
 
 ## Team Members
 - **Ali Noureddine**
